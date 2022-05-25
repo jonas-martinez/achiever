@@ -6,12 +6,23 @@ module.exports = (data, props) => {
     direction: "vertical",
     children: [
       {
-        type: "image",
-        src: "logo-vertical.png"
+        type: "text",
+        value: "Welcome to Lenra's multiplayer game."
       },
       {
-        type: "text",
-        value: "This is the Hello World base app using the data system."
+        type: "textfield",
+        value: "",
+        style: {
+          decoration: {
+            label: {
+              type: "text",
+              value: "Please enter a username."
+            }
+          }
+        },
+        onChanged: {
+          action: "setUsername"
+        }
       },
       {
         type: "widget",
@@ -23,15 +34,15 @@ module.exports = (data, props) => {
           }
         }
       },
-      {
-        type: "widget",
-        name: "counters",
-        query: {
-          "$find": {
-            "_datastore": "Counter"
-          }
-        }
-      }
+      // {
+      //   type: "widget",
+      //   name: "counters",
+      //   query: {
+      //     "$find": {
+      //       "_datastore": "Counter"
+      //     }
+      //   }
+      // }
     ]
   }
 }

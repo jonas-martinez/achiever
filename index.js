@@ -15,7 +15,8 @@ module.exports = async () => {
       newCounter: require("./listeners/newCounter"),
       deleteCounter: require("./listeners/deleteCounter"),
       onEnvStart: require('./listeners/onEnvStart'),
-      onUserFirstJoin: require('./listeners/onUserFirstJoin')
+      onUserFirstJoin: require('./listeners/onUserFirstJoin'),
+      setUsername: require('./listeners/setUsername')
     },
     rootWidget: 'main'
   }
