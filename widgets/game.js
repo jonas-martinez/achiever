@@ -16,7 +16,7 @@ module.exports = (data, props) => {
                 {
                     type: "actionable",
                     onPressed: {
-                        action: "gameCellClicked",
+                        action: "onGameCellClick",
                         props: {
                             x: 1,
                             y: 1
@@ -30,6 +30,7 @@ module.exports = (data, props) => {
                         },
                         child: {
                             type: "text",
+                            textAlign: "center",
                             value: "o"
                         }
                     }

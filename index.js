@@ -17,7 +17,8 @@ module.exports = async () => {
       deleteCounter: require("./listeners/deleteCounter"),
       onEnvStart: require('./listeners/onEnvStart'),
       onUserFirstJoin: require('./listeners/onUserFirstJoin'),
-      setUsername: require('./listeners/setUsername')
+      setUsername: require('./listeners/setUsername'),
+      onGameCellClick: require('./listeners/onGameCellClick'),
     },
     rootWidget: 'game'
   }
