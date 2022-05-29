@@ -7,7 +7,8 @@ module.exports = async () => {
       main: require('./widgets/main'),
       userData: require('./widgets/userData'),
       counters: require('./widgets/counters'),
-      counter: require('./widgets/counter')
+      counter: require('./widgets/counter'),
+      game: require('./widgets/game')
     },
     listeners: {
       increment: require('./listeners/increment'),
@@ -18,6 +19,6 @@ module.exports = async () => {
       onUserFirstJoin: require('./listeners/onUserFirstJoin'),
       setUsername: require('./listeners/setUsername')
     },
-    rootWidget: 'main'
+    rootWidget: 'game'
   }
 }
