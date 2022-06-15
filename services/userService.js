@@ -3,30 +3,23 @@
 const { default: axios } = require("axios");
 
 module.exports = {
-    get_test(api) {
-        return axios.get(`${api.url}/app/datastores/_users/data`, options(api));
+    get(api) {
+        return axios.post(
+            `${api.url}/app/query`,
+            {
+                "$find": {
+                    "_datastore": "_users",
+                    "_id": "@me"
+                }
+            },
+            headers(api)
+        ).then((value) => value.data.data[0]);
     },
-    get(api, user_id) {
-        return axios.get(`${api.url}/app/datastores/User/data/${user_id}`, options(api));
-    },
-    put(api, user) {
-        return axios.put(`${api.url}/app/datastores/User/data/${user._id}`, counter, options(api));
-    },
-    new(api, params) {
-        return axios.post(`${api.url}/app/datastores/User/data`, params, options(api));
-    },
-    delete(api, user_id) {
-        return axios.delete(`${api.url}/app/datastores/User/data/${user_id}`, options(api));
-    },
-    createDatastore(api) {
-        return axios.post(`${api.url}/app/datastores`, { "name": "User" }, options(api));
+    put(api, user_id, data) {
+        return axios.put(`${api.url}/app/datastores/_users/data/${user_id}`, data, headers(api));
     }
 }
 
-function options(api) {
-    return { headers: headers(api) }
-}
-
 function headers(api) {
-    return { Authorization: `Bearer ${api.token}` }
+    return { headers: { Authorization: `Bearer ${api.token}` } };
 }

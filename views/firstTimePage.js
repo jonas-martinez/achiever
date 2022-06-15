@@ -44,20 +44,16 @@ module.exports = (data, props) => {
                             },
                             onSubmitted: {
                                 action: "validateFirstTime"
-                            }
+                            }   
                         },
                     },
-
-                    //   {
-                    //     type: "widget",
-                    //     name: "userData",
-                    //     query: {
-                    //       "$find": {
-                    //         "_datastore": "_users",
-                    //         "_id": "@me"
-                    //       }
-                    //     }
-                    //   }
+                    {
+                        type: "button",
+                        text: "Validate",
+                        onPressed: {
+                            action: "validateFirstTime",
+                        }
+                    }
                 ]
             }
         ]

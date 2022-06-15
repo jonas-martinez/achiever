@@ -3,11 +3,9 @@
 const userService = require("../services/userService");
 
 module.exports = async (data, event, api) => {
-    console.log("SET SteamID");
-    console.log(data);
-    console.log(event);
-    console.log(api);
-    console.log((await userService.get_test(api)).data.data);
+    let userData = await userService.get(api);
+    userData.steamID = event.value;
+    await userService.put(api, userData._id, userData);
+    
     return {};
-    // return counterService.put(api, counter);
 }
