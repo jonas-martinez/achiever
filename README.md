@@ -1,20 +1,13 @@
-# **Lenra Game App**
+# **Lenra Steam Achievements**
 
-Welcome to the Lenra Game App repository.
+This is the Lenra Steam Achievements App. We give you the possibility to track achievements across your Steam library.
 
-## **Specifications**
+## Why Steam Achievements?
 
-Here you will find all of the main ideas that make this project work.
+Because you might be interested in "achievement hunting" just as I am, what stops you from having a companion in this adventure? This is the purpose of this app, track your achievements, tell you what needs to be done, clear your path to easier and faster achievement unlocking.
+If you are lucky, which you are, you might find some statistics to compare yourself to friends or to the world.
 
-### **Users**
+## How does it work?
 
-There is not much to say about users, we store only their username to be used in the game.
-
-**User Datastore**
-
-user_id | username
-
-### **Game**
-
-This game is using a grid system, the map is split into cells wich are forming a grid of 13x13.
+This is really basic. Just make sure that your Steam account is public so that we have the permission to read from your library and achievements. Enter your SteamID and you are good to go.
 
