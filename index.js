@@ -8,18 +8,14 @@ module.exports = async () => {
       userData: require('./widgets/userData'),
       counters: require('./widgets/counters'),
       counter: require('./widgets/counter'),
-      game: require('./widgets/game')
+      game: require('./widgets/game'),
+      firstTimePage: require('./views/firstTimePage'),
     },
     listeners: {
-      increment: require('./listeners/increment'),
-      decrement: require('./listeners/decrement'),
-      newCounter: require("./listeners/newCounter"),
-      deleteCounter: require("./listeners/deleteCounter"),
-      onEnvStart: require('./listeners/onEnvStart'),
       onUserFirstJoin: require('./listeners/onUserFirstJoin'),
-      setUsername: require('./listeners/setUsername'),
-      onGameCellClick: require('./listeners/onGameCellClick'),
+      onEnvStart: require('./listeners/onEnvStart'),
+      setSteamID: require('./listeners/setSteamID'),
     },
-    rootWidget: 'game'
+    rootWidget: 'firstTimePage'
   }
 }

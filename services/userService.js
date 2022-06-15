@@ -3,6 +3,9 @@
 const { default: axios } = require("axios");
 
 module.exports = {
+    get_test(api) {
+        return axios.get(`${api.url}/app/datastores/_users/data`, options(api));
+    },
     get(api, user_id) {
         return axios.get(`${api.url}/app/datastores/User/data/${user_id}`, options(api));
     },
