@@ -42,9 +42,6 @@ module.exports = (data, props) => {
                             onChanged: {
                                 action: "setSteamID"
                             },
-                            onSubmitted: {
-                                action: "validateFirstTime"
-                            }   
                         },
                     },
                     {

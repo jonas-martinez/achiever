@@ -1,11 +1,5 @@
 'use strict'
-
-const steamService = require("../services/steamService");
-
 module.exports = async (data, props) => {
-    let userGamesInfo = await steamService.getUserGames("", "", "76561197973393048");
-    console.log(Object.keys(userGamesInfo));
-    // console.log(userGamesInfo.response.games);
     return {
         type: "flex",
         direction: "horizontal",
@@ -25,6 +19,18 @@ module.exports = async (data, props) => {
                         value: "Achiever."
                     },
                 ]
+            },
+            {
+                type: "widget",
+                name: "gameList",
+                query: {
+                    "$find": {
+                        "_datastore": "games",
+                        "_refBy": {
+                            "$contains": ["@me"]
+                        }
+                    }
+                },
             }
         ]
     }

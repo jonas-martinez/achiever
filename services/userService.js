@@ -15,6 +15,20 @@ module.exports = {
             headers(api)
         ).then((value) => value.data.data[0]);
     },
+    getUserGames(api) {
+        return axios.post(
+            `${api.url}/app/query`,
+            {
+                "$find": {
+                    "_datastore": "games",
+                    "_refBy": {
+                        "$contains": ["@me"]
+                    }
+                }
+            },
+            headers(api)
+        ).then((value) => value.data);
+    },
     put(api, user_id, data) {
         return axios.put(`${api.url}/app/datastores/_users/data/${user_id}`, data, headers(api));
     }

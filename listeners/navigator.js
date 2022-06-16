@@ -1,6 +1,7 @@
 'use strict'
 
 const userService = require("../services/userService");
+const steamService = require("../services/steamService");
 
 
 module.exports = async (props, event, api) => {
@@ -9,6 +10,9 @@ module.exports = async (props, event, api) => {
         case "firstTimePage":
             return navigateTo(api, userData._id, userData, "firstTimePage");
         case "homePage":
+            console.log("GETTING USER GAMES");
+            await steamService.getUserGames(api, userData._id, userData.steamID);
+            console.log("GETTING USER GAMES DONE");
             return navigateTo(api, userData._id, userData, "homePage");
     }
 }

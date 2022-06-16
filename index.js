@@ -9,12 +9,12 @@ module.exports = async () => {
       firstTimePage: require('./views/firstTimePage'),
       navigator: require('./widgets/navigator'),
       homePage: require('./views/homePage'),
+      gameList: require('./widgets/gameList'),
     },
     listeners: {
       onUserFirstJoin: require('./listeners/onUserFirstJoin'),
       onEnvStart: require('./listeners/onEnvStart'),
       setSteamID: require('./listeners/setSteamID'),
-      validateFirstTime: require('./listeners/validateFirstTime'),
       navigate: require('./listeners/navigator'),
     },
     rootWidget: 'main'
