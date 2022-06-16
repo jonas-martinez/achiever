@@ -20,10 +20,8 @@ module.exports = {
             }
         })
         if (!exists) {
-            console.log("Game does not exist, creating...");
             return await axios.post(`${api.url}/app/datastores/games/data`, { ...newGame, "_refBy": [userId] }, { headers: { Authorization: `Bearer ${api.token}` } });
         } else {
-            console.log("Game already exists, updating...");
             if (existingGame._refBy.indexOf(userId) === -1) {
                 existingGame._refBy.push(userId);
             }
