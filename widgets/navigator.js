@@ -1,6 +1,8 @@
 'use strict'
 
 module.exports = (data, props) => {
+    console.log("NAVIGATOR");
+    console.log(data);
     switch (data[0].nav) {
         case "firstTimePage":
             return {

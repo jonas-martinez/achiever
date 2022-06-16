@@ -51,7 +51,10 @@ module.exports = (data, props) => {
                         type: "button",
                         text: "Validate",
                         onPressed: {
-                            action: "validateFirstTime",
+                            action: "navigate",
+                            props: {
+                                page: "homePage"
+                            }
                         }
                     }
                 ]

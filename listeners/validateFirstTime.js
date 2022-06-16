@@ -13,6 +13,7 @@ module.exports = async (data, event, api) => {
     console.log(userData);
     
     // TODO: Navigate to homePage
+    
 
     return {};
 }
