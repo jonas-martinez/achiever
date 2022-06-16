@@ -1,14 +1,16 @@
 'use strict'
 
 module.exports = async (data, props) => {
-    // console.log("GAME CARD");
-    // console.log(data);
-    console.log(props);
+    // console.log(props);
+
+    let minutesPlayed = props.playtime_forever % 60;
+    let hoursPlayed = Math.floor(props.playtime_forever / 60);
 
     return {
         type: "container",
         child: {
             type: "flex",
+            spacing: 1,
             children: [
                 {
                     type: "image",
@@ -20,7 +22,7 @@ module.exports = async (data, props) => {
                 },
                 {
                     type: "text",
-                    value: `${props.playtime_forever} minutes played`
+                    value: `${hoursPlayed}h ${minutesPlayed}m`
                 }
             ]
         }

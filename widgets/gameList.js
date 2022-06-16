@@ -1,15 +1,14 @@
 'use strict'
 
 module.exports = async (data, props) => {
-    console.log("GAME LIST");
-    console.log(data);
-
+    data.sort(function (a, b) {
+        return b.playtime_forever - a.playtime_forever;
+    });
     return {
         type: "flex",
         direction: "vertical",
         spacing: 2,
-        children: data.map(function(game) {
-            console.log("GAME" + game.name);
+        children: data.map(function (game) {
             return {
                 type: "widget",
                 name: "gameCard",
