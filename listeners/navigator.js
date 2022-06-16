@@ -13,6 +13,7 @@ module.exports = async (props, event, api) => {
             console.log("GETTING USER GAMES");
             await steamService.getUserGames(api, userData._id, userData.steamID);
             console.log("GETTING USER GAMES DONE");
+            console.log("\n\nNAVIGATING TO HOME PAGE\n\n");
             return navigateTo(api, userData._id, userData, "homePage");
     }
 }

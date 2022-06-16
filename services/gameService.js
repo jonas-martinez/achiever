@@ -9,6 +9,9 @@ module.exports = {
             return value.data
         });
     },
+    put(api, game) {
+        return axios.put(`${api.url}/app/datastores/games/data/${game._id}`, game, { headers: { Authorization: `Bearer ${api.token}` } });
+    },
     async new(api, newGame, userId) {
         let all = await this.get_all(api)
         let exists = false;
@@ -20,16 +23,13 @@ module.exports = {
             }
         })
         if (!exists) {
-            return await axios.post(`${api.url}/app/datastores/games/data`, { ...newGame, "_refBy": [userId] }, { headers: { Authorization: `Bearer ${api.token}` } });
+            return await axios.post(`${api.url}/app/datastores/games/data`, { ...newGame, "userIds": [userId] }, { headers: { Authorization: `Bearer ${api.token}` } });
         } else {
-            if (existingGame._refBy.indexOf(userId) === -1) {
-                existingGame._refBy.push(userId);
+            if (existingGame.userIds.indexOf(userId) === -1) {
+                existingGame.userIds.push(userId);
             }
-            return await put(api, existingGame);
+            return await this.put(api, existingGame);
         }
-    },
-    put(api, game) {
-        return axios.put(`${api.url}/app/datastores/games/data/${game._id}`, game, { headers: { Authorization: `Bearer ${api.token}` } });
     },
     createDatastore(api) {
         return axios.post(`${api.url}/app/datastores`, { "name": "games" }, { headers: { Authorization: `Bearer ${api.token}` } });

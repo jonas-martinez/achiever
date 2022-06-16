@@ -10,6 +10,7 @@ module.exports = async () => {
       navigator: require('./widgets/navigator'),
       homePage: require('./views/homePage'),
       gameList: require('./widgets/gameList'),
+      gameCard: require('./widgets/gameCard'),
     },
     listeners: {
       onUserFirstJoin: require('./listeners/onUserFirstJoin'),

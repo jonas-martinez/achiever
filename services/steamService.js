@@ -18,7 +18,7 @@ module.exports = {
                 promises.push(gameService.new(api, game, userId));
             }
         });
-        return Promise.all(promises);
+        return await Promise.all(promises);
     },
     put(api, userId, data) {
         return axios.put(`${api.url}/app/datastores/_users/data/${userId}`, data, headers(api));

@@ -2,7 +2,8 @@
 module.exports = async (data, props) => {
     return {
         type: "flex",
-        direction: "horizontal",
+        direction: "vertical",
+        scroll: true,
         mainAxisAlignment: "center",
         crossAxisAlignment: "center",
         fillParent: true,
@@ -26,7 +27,7 @@ module.exports = async (data, props) => {
                 query: {
                     "$find": {
                         "_datastore": "games",
-                        "_refBy": {
+                        "userIds": {
                             "$contains": ["@me"]
                         }
                     }
