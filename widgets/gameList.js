@@ -7,6 +7,7 @@ module.exports = async (data, props) => {
     return {
         type: "flex",
         direction: "vertical",
+        scroll: true,
         spacing: 2,
         children: data.map(function (game) {
             return {

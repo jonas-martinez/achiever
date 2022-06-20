@@ -1,29 +1,51 @@
 'use strict'
 
 module.exports = async (data, props) => {
-    // console.log(props);
+    console.log("GAME CARD");
+    console.log(props);
 
     let minutesPlayed = props.playtime_forever % 60;
     let hoursPlayed = Math.floor(props.playtime_forever / 60);
 
     return {
         type: "container",
+        padding: {
+            bottom: 1,
+            left: 1,
+            right: 1,
+            top: 1
+        },
+        border: {
+            bottom: {},
+            left: {},
+            top: {},
+            right: {}
+        },
         child: {
             type: "flex",
             spacing: 1,
             children: [
                 {
                     type: "image",
-                    src: `http://media.steampowered.com/steamcommunity/public/images/apps/${props.appid}/${props.img_icon_url}.jpg`,
+                    src: `https://cdn.cloudflare.steamstatic.com/steam/apps/${props.appid}/capsule_231x87.jpg`,
+                    // 349480 is the default image for games that don't have a picture
                 },
                 {
-                    type: "text",
-                    value: props.name
+                    type: "flex",
+                    direction: "vertical",
+                    spacing: 1,
+                    children: [
+                        {
+                            type: "text",
+                            value: props.name
+                        },
+                        {
+                            type: "text",
+                            value: `${hoursPlayed}h ${minutesPlayed}m`
+                        }
+                    ]
                 },
-                {
-                    type: "text",
-                    value: `${hoursPlayed}h ${minutesPlayed}m`
-                }
+
             ]
         }
     }

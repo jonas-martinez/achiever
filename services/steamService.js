@@ -16,9 +16,24 @@ module.exports = {
         games.games.forEach(game => {
             if (game !== undefined) {
                 promises.push(gameService.new(api, game, userId));
+                this.getUserGameAchievements(api, userId, steamId, game.appid);
             }
         });
         return await Promise.all(promises);
+    },
+    async getUserGameAchievements(api, userId, steamId, gameId) {
+        let achievements = await axios.get(`${steamAPIBaseUrl}/ISteamUserStats/GetPlayerAchievements/v0001/?key=${steamAPIKey}&steamid=${steamId}&appid=${gameId}`).then((value) => value.data.playerstats.achievements);
+        console.log("GET USER GAME ACHIEVEMENTS");
+        console.log(achievements);
+        let unlockedAchievementsNumber = achievements.reduce(function(acc, cur) {
+            return acc + cur.achieved;
+        }, 0);
+
+        let game = gameService.get(api, gameId);
+        // TODO: Create new datastore UserGame to handle user specific game information such as unlocked achievements
+        // userGameService.put(api, game);
+        
+        return achievements;
     },
     put(api, userId, data) {
         return axios.put(`${api.url}/app/datastores/_users/data/${userId}`, data, headers(api));
