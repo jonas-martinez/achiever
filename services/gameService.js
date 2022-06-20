@@ -3,6 +3,18 @@
 const { default: axios } = require("axios");
 
 module.exports = {
+    get(api, gameId) {
+        return axios.post(
+            `${api.url}/app/query`,
+            {
+                "$find": {
+                    "_datastore": "games",
+                    "appid": gameId
+                }
+            },
+            headers(api)
+        ).then((value) => value.data.data[0]);
+    },
     get_all(api) {
         return axios.get(`${api.url}/app/datastores/games/data`, { headers: { Authorization: `Bearer ${api.token}` } }
         ).then((value) => {
