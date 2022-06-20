@@ -17,6 +17,7 @@ module.exports = async () => {
       onEnvStart: require('./listeners/onEnvStart'),
       setSteamID: require('./listeners/setSteamID'),
       navigate: require('./listeners/navigator'),
+      debug: require('./listeners/debug'),
     },
     rootWidget: 'main'
   }

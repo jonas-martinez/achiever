@@ -22,6 +22,13 @@ module.exports = async (data, props) => {
                         value: "Achiever"
                     },
                     {
+                        type: "button",
+                        text: "DEBUG BUTTON",
+                        onPressed: {
+                            action: "debug"
+                        }
+                    },
+                    {
                         type: "flexible",
                         child: {
                             type: "container",

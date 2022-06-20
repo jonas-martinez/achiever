@@ -1,9 +1,6 @@
 'use strict'
 
 module.exports = async (data, props) => {
-    console.log("GAME CARD");
-    console.log(props);
-
     let minutesPlayed = props.playtime_forever % 60;
     let hoursPlayed = Math.floor(props.playtime_forever / 60);
 
