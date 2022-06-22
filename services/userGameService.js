@@ -1,6 +1,7 @@
 'use strict'
 
 const { default: axios } = require("axios");
+const steamService = require("./steamService");
 
 module.exports = {
     get(api, gameId) {
@@ -30,15 +31,16 @@ module.exports = {
     },
     async new(api, newUserGame, userId) {
         let userGame = await this.get(api, newUserGame.appid);
-        if(userGame === undefined) {
+        if (userGame === undefined) {
             return await axios.post(`${api.url}/app/datastores/userGames/data`, { ...newUserGame, "userId": userId }, { headers: { Authorization: `Bearer ${api.token}` } });
         } else {
-            // TODO: Put user game 
-            // return await this.put(api, userId, )
+            let userData = await userService.get(api);
+            let unlockedAchievements = await steamService.getUserGameAchievements(userData.steamId, userGame.appid);
+            return await this.put(api, userGame._id, { ...userGame, achieved: unlockedAchievements, playtime_forever: newUserGame.playtime_forever })
         }
     },
-    put(api, userId, data) {
-        return axios.put(`${api.url}/app/datastores/userGames/data/${userId}`, data, headers(api));
+    put(api, userGameId, data) {
+        return axios.put(`${api.url}/app/datastores/userGames/data/${userGameId}`, data, headers(api));
     },
     createDatastore(api) {
         return axios.post(`${api.url}/app/datastores`, { "name": "userGames" }, { headers: { Authorization: `Bearer ${api.token}` } });
