@@ -11,6 +11,7 @@ module.exports = async () => {
       homePage: require('./views/homePage'),
       gameList: require('./widgets/gameList'),
       gameCard: require('./widgets/gameCard'),
+      gameCardAchievements: require('./widgets/gameCardAchievements'),
     },
     listeners: {
       onUserFirstJoin: require('./listeners/onUserFirstJoin'),

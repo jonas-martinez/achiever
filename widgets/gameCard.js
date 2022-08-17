@@ -39,6 +39,16 @@ module.exports = async (data, props) => {
                         {
                             type: "text",
                             value: `${hoursPlayed}h ${minutesPlayed}m`
+                        },
+                        {
+                            type: "widget",
+                            name: "gameCardAchievements",
+                            query: {
+                                "$find": {
+                                    "_datastore": "userGames",
+
+                                }
+                            }
                         }
                     ]
                 },

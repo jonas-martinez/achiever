@@ -20,12 +20,16 @@ module.exports = {
                     // Add game in datastore
                     await gameService.new(api, game, userId);
                     // Add achievements to game
-                    let achievements = await this.getGameAchievements(steamId, game.appid)
+                    let achievements = await this.getGameAchievements(steamId, game.appid);
                     await gameService.new(api, { ...game, achievements: achievements });
                     // Add user game achievements in datastore
-                    let unlockedAchievements = await this.getUserGameAchievements(api, userId, steamId, game.appid);
+                    let unlockedAchievements = await this.getUserGameAchievements(steamId, game.appid);
                     // TODO: Also add play time
-                    await userGameService.new(api, { appid: game.appid, achieved: unlockedAchievements }, userId)
+                    await userGameService.new(api, userId, { appid: game.appid, achieved: unlockedAchievements }, async () => {
+                        let userData = await userService.get(api);
+                        let unlockedAchievements = await userGameService.getUserGameAchievements(userData.steamId, userGame.appid);
+                        return await userGameService.put(api, userGame._id, { ...userGame, achieved: unlockedAchievements, playtime_forever: newUserGame.playtime_forever })
+                    });
                 }));
             }
         });
@@ -34,13 +38,14 @@ module.exports = {
     async getGameAchievements(steamId, gameId) {
         // Get user game achievements as there is not API to get game achievements directly
         let achievements = await axios.get(`${steamAPIBaseUrl}/ISteamUserStats/GetPlayerAchievements/v0001/?key=${steamAPIKey}&steamid=${steamId}&appid=${gameId}`).then((value) => value.data.playerstats.achievements);
-        // Return array of achievements apiname
-        return achievements.map(achievement => achievement.apiname);
+        if (achievements != undefined && achievements != null) {
+            // Return array of achievements apiname
+            return achievements.map(achievement => achievement.apiname);
+        }
     },
     async getUserGameAchievements(steamId, gameId) {
         // Get user achievements (unlocked & locked)
         let achievements = await axios.get(`${steamAPIBaseUrl}/ISteamUserStats/GetPlayerAchievements/v0001/?key=${steamAPIKey}&steamid=${steamId}&appid=${gameId}`).then((value) => value.data.playerstats.achievements);
-
         // Filter unlocked achievements
         let unlocked = achievements.filter(achievement => achievement.achieved == 1 ? true : false);
 
