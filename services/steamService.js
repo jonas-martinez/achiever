@@ -21,7 +21,7 @@ module.exports = {
                     await gameService.new(api, game, userId);
                     // Add achievements to game
                     let achievements = await this.getGameAchievements(steamId, game.appid)
-                    await gameService.put(api, { ...game, achievements: achievements });
+                    await gameService.new(api, { ...game, achievements: achievements });
                     // Add user game achievements in datastore
                     let unlockedAchievements = await this.getUserGameAchievements(api, userId, steamId, game.appid);
                     // TODO: Also add play time

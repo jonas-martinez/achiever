@@ -26,6 +26,17 @@ module.exports = (data, props) => {
                     }
                 }
             }
+        default:
+            return {
+                type: "widget",
+                name: "firstTimePage",
+                query: {
+                    "$find": {
+                        "_datastore": "_users",
+                        "_id": "@me"
+                    }
+                }
+            }
     }
 
 }
