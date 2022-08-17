@@ -26,9 +26,10 @@ module.exports = {
                     let unlockedAchievements = await this.getUserGameAchievements(steamId, game.appid);
                     // TODO: Also add play time
                     await userGameService.new(api, userId, { appid: game.appid, achieved: unlockedAchievements }, async () => {
+                        let userGame = await userGameService.get(api, game.appid);
                         let userData = await userService.get(api);
                         let unlockedAchievements = await userGameService.getUserGameAchievements(userData.steamId, userGame.appid);
-                        return await userGameService.put(api, userGame._id, { ...userGame, achieved: unlockedAchievements, playtime_forever: newUserGame.playtime_forever })
+                        return await userGameService.put(api, userGame._id, { ...userGame, achieved: unlockedAchievements, playtime_forever: userGame.playtime_forever })
                     });
                 }));
             }
