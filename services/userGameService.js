@@ -37,7 +37,7 @@ module.exports = {
         if (userGame === undefined) {
             return await axios.post(`${api.url}/app/datastores/userGames/data`, { ...newUserGame, "userId": userId }, { headers: { Authorization: `Bearer ${api.token}` } });
         } else {
-            callback();           
+            return await callback();
         }
     },
     put(api, userGameId, data) {

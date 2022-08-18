@@ -46,7 +46,8 @@ module.exports = async (data, props) => {
                             query: {
                                 "$find": {
                                     "_datastore": "userGames",
-
+                                    "userId": "@me",
+                                    "appid": props.appid
                                 }
                             }
                         }

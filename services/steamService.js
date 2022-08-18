@@ -48,9 +48,12 @@ module.exports = {
         // Get user achievements (unlocked & locked)
         let achievements = await axios.get(`${steamAPIBaseUrl}/ISteamUserStats/GetPlayerAchievements/v0001/?key=${steamAPIKey}&steamid=${steamId}&appid=${gameId}`).then((value) => value.data.playerstats.achievements);
         // Filter unlocked achievements
-        let unlocked = achievements.filter(achievement => achievement.achieved == 1 ? true : false);
-
-        return unlocked.map(achievement => achievement.apiname);
+        if (achievements != undefined) {
+            let unlocked = achievements.filter(achievement => achievement.achieved == 1 ? true : false);
+            return unlocked.map(achievement => achievement.apiname);
+        } else {
+            return [];
+        }
     },
     put(api, userId, data) {
         return axios.put(`${api.url}/app/datastores/_users/data/${userId}`, data, headers(api));
