@@ -1,0 +1,14 @@
+componentsApi: "1.0"
+generator:
+  dofigen: 
+    image: node:12-alpine
+    user: "0"
+    adds: 
+      - "."
+    script: 
+      - npm i
+    cmd: 
+      - node
+      - server.js
+    ports:
+    - 4000

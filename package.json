@@ -2,7 +2,7 @@
   "name": "node12-template-hello-world",
   "version": "1.0.0",
   "description": "Lenra's node12 template hello world",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
   },
@@ -10,6 +10,9 @@
   "author": "Lenra",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.27.1"
+    "axios": "^0.27.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "morgan": "^1.10.0"
   }
 }
