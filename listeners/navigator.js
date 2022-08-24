@@ -15,12 +15,15 @@ module.exports = async (props, event, api) => {
             console.log("GETTING USER GAMES DONE");
             console.log("\n\nNAVIGATING TO HOME PAGE\n\n");
             return navigateTo(api, userData._id, userData, "homePage");
+        case "gamePage":
+            return navigateTo(api, userData._id, userData, "gamePage", {gameId: props.appid, api: api});
     }
 }
 
-function navigateTo(api, userId, userData, page) {
+function navigateTo(api, userId, userData, page, data = {}) {
     return userService.put(api, userId, {
         ...userData,
-        nav: page
+        nav: page,
+        navData : data
     });
 }

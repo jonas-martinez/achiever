@@ -26,6 +26,17 @@ module.exports = (data, props) => {
                     }
                 }
             }
+        case "gamePage":
+            return {
+                type: "widget",
+                name: "gamePage",
+                query: {
+                    "$find": {
+                        "_datastore": "_users",
+                        "_id": "@me"
+                    }
+                }
+            }
         default:
             return {
                 type: "widget",

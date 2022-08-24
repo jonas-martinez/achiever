@@ -9,6 +9,7 @@ module.exports = async () => {
       firstTimePage: require('./views/firstTimePage'),
       navigator: require('./widgets/navigator'),
       homePage: require('./views/homePage'),
+      gamePage: require('./views/gamePage'),
       gameList: require('./widgets/gameList'),
       gameCard: require('./widgets/gameCard'),
       gameCardAchievements: require('./widgets/gameCardAchievements'),
