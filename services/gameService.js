@@ -1,28 +1,17 @@
 'use strict'
 
 const { default: axios } = require("axios");
+const apiServices = require('./api');
 
 module.exports = {
     get(api, gameId) {
-        return axios.post(
-            `${api.url}/app/query`,
-            {
-                "$find": {
-                    "_datastore": "games",
-                    "appid": gameId
-                }
-            },
-            headers(api)
-        ).then((value) => value.data.data[0]);
+        return apiServices.executeQuery(api, "games", { "appid": gameId }).then((value) => value.data.data[0]);
     },
     get_all(api) {
-        return axios.get(`${api.url}/app/datastores/games/data`, { headers: { Authorization: `Bearer ${api.token}` } }
-        ).then((value) => {
-            return value.data
-        });
+        return apiServices.get_all(api, "games").then((value) => value.data);
     },
-    put(api, game) {
-        return axios.put(`${api.url}/app/datastores/games/data/${game._id}`, game, { headers: { Authorization: `Bearer ${api.token}` } });
+    update(api, game) {
+        return apiServices.updateDoc(api, "games", game);
     },
     async new(api, newGame, userId) {
         let all = await this.get_all(api)
@@ -35,19 +24,12 @@ module.exports = {
             }
         })
         if (!exists) {
-            return await axios.post(`${api.url}/app/datastores/games/data`, { ...newGame, "userIds": [userId] }, { headers: { Authorization: `Bearer ${api.token}` } });
+            return await apiServices.createDoc(api, "games", { ...newGame, "userIds": [userId] });
         } else {
             if (existingGame.userIds.indexOf(userId) === -1) {
                 existingGame.userIds.push(userId);
             }
-            return await this.put(api, existingGame);
+            return await this.update(api, existingGame);
         }
     },
-    createDatastore(api) {
-        return axios.post(`${api.url}/app/datastores`, { "name": "games" }, { headers: { Authorization: `Bearer ${api.token}` } });
-    },
-}
-
-function headers(api) {
-    return { headers: { Authorization: `Bearer ${api.token}` } };
 }
