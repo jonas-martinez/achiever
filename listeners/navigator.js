@@ -6,24 +6,26 @@ const steamService = require("../services/steamService");
 
 module.exports = async (props, event, api) => {
     var userData = await userService.get(api);
+    console.log("NAVIGATOR");
+    console.log(userData);
     switch (props.page) {
         case "firstTimePage":
-            return navigateTo(api, userData._id, userData, "firstTimePage");
+            return navigateTo(api, userData, "firstTimePage");
         case "homePage":
             console.log("GETTING USER GAMES");
             steamService.getUserGames(api, userData._id, userData.steamID);
             console.log("GETTING USER GAMES DONE");
             console.log("\n\nNAVIGATING TO HOME PAGE\n\n");
-            return navigateTo(api, userData._id, userData, "homePage");
+            return navigateTo(api, userData, "homePage");
         case "gamePage":
-            return navigateTo(api, userData._id, userData, "gamePage", {gameId: props.appid, api: api});
+            return navigateTo(api, userData, "gamePage", { gameId: props.appid, api: api });
     }
 }
 
-function navigateTo(api, userId, userData, page, data = {}) {
-    return userService.put(api, userId, {
+function navigateTo(api, userData, page, data = {}) {
+    return userService.update(api, {
         ...userData,
         nav: page,
-        navData : data
+        navData: data
     });
 }

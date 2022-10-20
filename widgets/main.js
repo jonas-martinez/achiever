@@ -6,7 +6,7 @@ module.exports = async (data, props) => {
     name: "navigator",
     coll: "users",
     query: {
-      "_id": "@me"
+      "id": "@me"
     }
   }
 }

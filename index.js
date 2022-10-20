@@ -15,6 +15,7 @@ module.exports = async () => {
       gameCardAchievements: require('./widgets/gameCardAchievements'),
     },
     listeners: {
+      onSessionStart: require('./listeners/onSessionStart'),
       onUserFirstJoin: require('./listeners/onUserFirstJoin'),
       onEnvStart: require('./listeners/onEnvStart'),
       setSteamID: require('./listeners/setSteamID'),

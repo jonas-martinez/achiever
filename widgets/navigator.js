@@ -10,7 +10,7 @@ module.exports = (data, props) => {
                 name: "firstTimePage",
                 coll: "users",
                 query: {
-                    "_id": "@me"
+                    "id": "@me"
                 }
             }
         case "homePage":
@@ -19,7 +19,7 @@ module.exports = (data, props) => {
                 name: "homePage",
                 coll: "users",
                 query: {
-                    "_id": "@me"
+                    "id": "@me"
                 }
             }
         case "gamePage":
@@ -28,7 +28,7 @@ module.exports = (data, props) => {
                 name: "gamePage",
                 coll: "users",
                 query: {
-                    "_id": "@me"
+                    "id": "@me"
                 }
             }
         default:
@@ -37,7 +37,7 @@ module.exports = (data, props) => {
                 name: "firstTimePage",
                 coll: "users",
                 query: {
-                    "_id": "@me"
+                    "id": "@me"
                 }
             }
     }

@@ -6,13 +6,13 @@ const apiServices = require('./api');
 module.exports = {
     get(api, gameId) {
         return apiServices.executeQuery(api, "userGames", {
-            "_id": "@me",
+            "id": "@me",
             "appid": gameId
         }).then((value) => value.data.data[0]);
     },
     get_all(api) {
         return apiServices.executeQuery(api, "userGames", {
-            "_id": "@me"
+            "id": "@me"
         }).then((value) => value.data);
     },
     async new(api, userId, newUserGame, callback) {

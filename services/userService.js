@@ -6,8 +6,8 @@ const apiServices = require('./api');
 module.exports = {
     get(api) {
         return apiServices.executeQuery(api, "users", {
-            "_id": "@me"
-        }).then((value) => value.data);
+            "id": "@me"
+        }).then((value) => value.data[0]);
     },
     create(api, userData) {
         return apiServices.createDoc(api, "users", userData);
@@ -19,7 +19,8 @@ module.exports = {
             }
         }).then((value) => value.data);
     },
-    update(api, user_id, data) {
-        return apiServices.updateDoc(api, "users", { "_id": user_id, ...data })
+    async update(api, data) {
+        let user = await this.get(api);
+        return apiServices.updateDoc(api, "users", { "_id": user._id, ...data })
     }
 }
