@@ -4,11 +4,9 @@ module.exports = async (data, props) => {
   return {
     type: "widget",
     name: "navigator",
+    coll: "users",
     query: {
-      "$find": {
-        "_datastore": "_users",
-        "_id": "@me"
-      }
+      "_id": "@me"
     }
   }
 }

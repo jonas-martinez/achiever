@@ -52,12 +52,10 @@ module.exports = async (data, props) => {
                             {
                                 type: "widget",
                                 name: "gameCardAchievements",
+                                coll: "userGames",
                                 query: {
-                                    "$find": {
-                                        "_datastore": "userGames",
-                                        "userId": "@me",
-                                        "appid": props.appid
-                                    }
+                                    "userId": "@me",
+                                    "appid": props.appid
                                 }
                             }
                         ]

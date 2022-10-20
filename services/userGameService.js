@@ -18,15 +18,12 @@ module.exports = {
     async new(api, userId, newUserGame, callback) {
         let userGame = await this.get(api, newUserGame.appid);
         if (userGame === undefined) {
-            return await axios.post(`${api.url}/app/datastores/userGames/data`, { ...newUserGame, "userId": userId }, { headers: { Authorization: `Bearer ${api.token}` } });
+            return await apiServices.createDoc(api, "userGames", { ...newUserGame, "userId": userId });
         } else {
             return await callback();
         }
     },
     put(api, userGameId, data) {
-        return axios.put(`${api.url}/app/datastores/userGames/data/${userGameId}`, data, headers(api));
-    },
-    createDatastore(api) {
-        return axios.post(`${api.url}/app/datastores`, { "name": "userGames" }, { headers: { Authorization: `Bearer ${api.token}` } });
-    },
+        return apiServices.updateDoc(api, "userGames", { "_id": userGameId, ...data })
+    }
 };

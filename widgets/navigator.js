@@ -8,44 +8,36 @@ module.exports = (data, props) => {
             return {
                 type: "widget",
                 name: "firstTimePage",
+                coll: "users",
                 query: {
-                    "$find": {
-                        "_datastore": "_users",
-                        "_id": "@me"
-                    }
+                    "_id": "@me"
                 }
             }
         case "homePage":
             return {
                 type: "widget",
                 name: "homePage",
+                coll: "users",
                 query: {
-                    "$find": {
-                        "_datastore": "_users",
-                        "_id": "@me"
-                    }
+                    "_id": "@me"
                 }
             }
         case "gamePage":
             return {
                 type: "widget",
                 name: "gamePage",
+                coll: "users",
                 query: {
-                    "$find": {
-                        "_datastore": "_users",
-                        "_id": "@me"
-                    }
+                    "_id": "@me"
                 }
             }
         default:
             return {
                 type: "widget",
                 name: "firstTimePage",
+                coll: "users",
                 query: {
-                    "$find": {
-                        "_datastore": "_users",
-                        "_id": "@me"
-                    }
+                    "_id": "@me"
                 }
             }
     }

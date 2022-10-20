@@ -57,10 +57,7 @@ module.exports = {
         }
     },
     put(api, userId, data) {
-        return axios.put(`${api.url}/app/datastores/_users/data/${userId}`, data, headers(api));
+        return apiServices.updateDoc(api, "users", data);
+        //return axios.put(`${api.url}/app/datastores/_users/data/${userId}`, data, headers(api));
     }
-}
-
-function headers(api) {
-    return { headers: { Authorization: `Bearer ${api.token}` } };
 }
