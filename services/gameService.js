@@ -17,19 +17,21 @@ module.exports = {
         let all = await this.get_all(api)
         let exists = false;
         let existingGame = {};
-        all.data.map(game => {
+        all.map(game => {
             if (game.appid == newGame.appid) {
                 exists = true;
                 existingGame = game;
             }
         })
         if (!exists) {
-            return await apiServices.createDoc(api, "games", { ...newGame, "userIds": [userId] });
+            let res = await apiServices.createDoc(api, "games", { ...newGame, "userIds": [userId] });
+            return res.data;
         } else {
             if (existingGame.userIds.indexOf(userId) === -1) {
                 existingGame.userIds.push(userId);
             }
-            return await this.update(api, existingGame);
+            let res = await this.update(api, existingGame);
+            return res.data;
         }
     },
 }
