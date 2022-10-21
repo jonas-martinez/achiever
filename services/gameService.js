@@ -14,23 +14,19 @@ module.exports = {
         return apiServices.updateDoc(api, "games", game);
     },
     async new(api, newGame, userId) {
-        let all = await this.get_all(api)
-        let exists = false;
-        let existingGame = {};
-        all.map(game => {
-            if (game.appid == newGame.appid) {
-                exists = true;
-                existingGame = game;
-            }
-        })
-        if (!exists) {
+        let existingGame = (await apiServices.executeQuery(api, "games", {
+            "appid": newGame.appid
+        })).data;
+
+        if (typeof existingGame === 'undefined' || existingGame.length == 0) {
             let res = await apiServices.createDoc(api, "games", { ...newGame, "userIds": [userId] });
             return res.data;
         } else {
+            existingGame = existingGame[0];
             if (existingGame.userIds.indexOf(userId) === -1) {
                 existingGame.userIds.push(userId);
             }
-            let res = await this.update(api, existingGame);
+            let res = await this.update(api, { ...existingGame, ...newGame });
             return res.data;
         }
     },

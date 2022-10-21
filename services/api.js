@@ -4,22 +4,22 @@ const { default: axios } = require("axios");
 
 module.exports = {
     get_all(api, coll) {
-        return axios.get(`${api.url}/app/colls/${coll}/docs`, options(api));
+        return axios.get(`${api.url}/app/colls/${coll}/docs`, options(api)).catch((error) => console.log(error));
     },
     getDoc(api, coll, id) {
-        return axios.get(`${api.url}/app/colls/${coll}/docs/${id}`, options(api));
+        return axios.get(`${api.url}/app/colls/${coll}/docs/${id}`, options(api)).catch((error) => console.log(error));
     },
     createDoc(api, coll, doc) {
-        return axios.post(`${api.url}/app/colls/${coll}/docs`, doc, options(api));
+        return axios.post(`${api.url}/app/colls/${coll}/docs`, doc, options(api)).catch((error) => console.log(error));
     },
     updateDoc(api, coll, doc) {
-        return axios.put(`${api.url}/app/colls/${coll}/docs/${doc._id}`, doc, options(api));
+        return axios.put(`${api.url}/app/colls/${coll}/docs/${doc._id}`, doc, options(api)).catch((error) => console.log(error));
     },
     deleteDoc(api, coll, doc) {
-        return axios.delete(`${api.url}/app/colls/${coll}/docs/${doc._id}`, options(api));
+        return axios.delete(`${api.url}/app/colls/${coll}/docs/${doc._id}`, options(api)).catch((error) => console.log(error));
     },
     executeQuery(api, coll, query) {
-        return axios.post(`${api.url}/app/colls/${coll}/docs/find`, query, options(api));
+        return axios.post(`${api.url}/app/colls/${coll}/docs/find`, query, options(api)).catch((error) => console.log(error));
     }
 }
 
