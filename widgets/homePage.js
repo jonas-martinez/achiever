@@ -39,12 +39,10 @@ module.exports = async (data, props) => {
                             child: {
                                 type: "widget",
                                 name: "gameList",
+                                coll: "games",
                                 query: {
-                                    "$find": {
-                                        "_datastore": "games",
-                                        "userIds": {
-                                            "$contains": ["@me"]
-                                        }
+                                    "userIds": {
+                                        "$contains": ["@me"]
                                     }
                                 },
                             }

@@ -5,7 +5,7 @@ const apiServices = require('./api');
 
 module.exports = {
     get(api, gameId) {
-        return apiServices.executeQuery(api, "games", { "appid": gameId }).then((value) => value.data.data[0]);
+        return apiServices.executeQuery(api, "games", { "appid": gameId }).then((value) => value.data[0]);
     },
     get_all(api) {
         return apiServices.get_all(api, "games").then((value) => value.data);

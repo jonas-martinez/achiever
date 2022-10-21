@@ -8,7 +8,7 @@ module.exports = {
         return apiServices.executeQuery(api, "userGames", {
             "id": "@me",
             "appid": gameId
-        }).then((value) => value.data.data[0]);
+        }).then((value) => value.data[0]);
     },
     get_all(api) {
         return apiServices.executeQuery(api, "userGames", {
