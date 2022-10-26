@@ -41,9 +41,7 @@ module.exports = async (data, props) => {
                                 name: "gameList",
                                 coll: "games",
                                 query: {
-                                    "userIds": {
-                                        "$contains": ["@me"]
-                                    }
+                                    "userIds": "@me"
                                 },
                             }
                         }
