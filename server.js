@@ -9,7 +9,7 @@ const morgan = require('morgan');
 const app = express();
 
 const manifestHandler = require('./index.js');
-const defaultMaxSize = '100kb'; // body-parser default
+const defaultMaxSize = '50mb'; // body-parser default
 
 const rawLimit = process.env.MAX_RAW_SIZE || defaultMaxSize;
 const jsonLimit = process.env.MAX_JSON_SIZE || defaultMaxSize;
