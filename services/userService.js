@@ -1,39 +1,26 @@
 'use strict'
 
 const { default: axios } = require("axios");
+const apiServices = require('./api');
 
 module.exports = {
     get(api) {
-        return axios.post(
-            `${api.url}/app/query`,
-            {
-                "$find": {
-                    "_datastore": "_users",
-                    "_id": "@me"
-                }
-            },
-            headers(api)
-        ).then((value) => value.data.data[0]);
+        return apiServices.executeQuery(api, "users", {
+            "id": "@me"
+        }).then((value) => value.data[0]);
+    },
+    create(api, userData) {
+        return apiServices.createDoc(api, "users", userData);
     },
     getUserGames(api) {
-        return axios.post(
-            `${api.url}/app/query`,
-            {
-                "$find": {
-                    "_datastore": "games",
-                    "_refBy": {
-                        "$contains": ["@me"]
-                    }
-                }
-            },
-            headers(api)
-        ).then((value) => value.data);
+        return apiServices.executeQuery(api, "games", {
+            "_refBy": {
+                "$contains": ["@me"]
+            }
+        }).then((value) => value.data);
     },
-    put(api, user_id, data) {
-        return axios.put(`${api.url}/app/datastores/_users/data/${user_id}`, data, headers(api));
+    async update(api, data) {
+        let user = await this.get(api);
+        return apiServices.updateDoc(api, "users", { "_id": user._id, ...data })
     }
-}
-
-function headers(api) {
-    return { headers: { Authorization: `Bearer ${api.token}` } };
 }

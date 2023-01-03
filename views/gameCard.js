@@ -50,14 +50,12 @@ module.exports = async (data, props) => {
                                 value: `${hoursPlayed}h ${minutesPlayed}m`
                             },
                             {
-                                type: "widget",
+                                type: "view",
                                 name: "gameCardAchievements",
+                                coll: "userGames",
                                 query: {
-                                    "$find": {
-                                        "_datastore": "userGames",
-                                        "userId": "@me",
-                                        "appid": props.appid
-                                    }
+                                    "userId": "@me",
+                                    "appid": props.appid
                                 }
                             }
                         ]

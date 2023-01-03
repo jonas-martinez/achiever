@@ -6,46 +6,38 @@ module.exports = (data, props) => {
     switch (data[0].nav) {
         case "firstTimePage":
             return {
-                type: "widget",
+                type: "view",
                 name: "firstTimePage",
+                coll: "users",
                 query: {
-                    "$find": {
-                        "_datastore": "_users",
-                        "_id": "@me"
-                    }
+                    "id": "@me"
                 }
             }
         case "homePage":
             return {
-                type: "widget",
+                type: "view",
                 name: "homePage",
+                coll: "users",
                 query: {
-                    "$find": {
-                        "_datastore": "_users",
-                        "_id": "@me"
-                    }
+                    "id": "@me"
                 }
             }
         case "gamePage":
             return {
-                type: "widget",
+                type: "view",
                 name: "gamePage",
+                coll: "users",
                 query: {
-                    "$find": {
-                        "_datastore": "_users",
-                        "_id": "@me"
-                    }
+                    "id": "@me"
                 }
             }
         default:
             return {
-                type: "widget",
+                type: "view",
                 name: "firstTimePage",
+                coll: "users",
                 query: {
-                    "$find": {
-                        "_datastore": "_users",
-                        "_id": "@me"
-                    }
+                    "id": "@me"
                 }
             }
     }

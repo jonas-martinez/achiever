@@ -11,7 +11,7 @@ module.exports = async (data, props) => {
         spacing: 2,
         children: data.map(function (game) {
             return {
-                type: "widget",
+                type: "view",
                 name: "gameCard",
                 props: game
             }

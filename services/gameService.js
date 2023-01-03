@@ -1,53 +1,33 @@
 'use strict'
 
 const { default: axios } = require("axios");
+const apiServices = require('./api');
 
 module.exports = {
     get(api, gameId) {
-        return axios.post(
-            `${api.url}/app/query`,
-            {
-                "$find": {
-                    "_datastore": "games",
-                    "appid": gameId
-                }
-            },
-            headers(api)
-        ).then((value) => value.data.data[0]);
+        return apiServices.executeQuery(api, "games", { "appid": gameId }).then((value) => value.data[0]);
     },
     get_all(api) {
-        return axios.get(`${api.url}/app/datastores/games/data`, { headers: { Authorization: `Bearer ${api.token}` } }
-        ).then((value) => {
-            return value.data
-        });
+        return apiServices.get_all(api, "games").then((value) => value.data);
     },
-    put(api, game) {
-        return axios.put(`${api.url}/app/datastores/games/data/${game._id}`, game, { headers: { Authorization: `Bearer ${api.token}` } });
+    update(api, game) {
+        return apiServices.updateDoc(api, "games", game);
     },
     async new(api, newGame, userId) {
-        let all = await this.get_all(api)
-        let exists = false;
-        let existingGame = {};
-        all.data.map(game => {
-            if (game.appid == newGame.appid) {
-                exists = true;
-                existingGame = game;
-            }
-        })
-        if (!exists) {
-            return await axios.post(`${api.url}/app/datastores/games/data`, { ...newGame, "userIds": [userId] }, { headers: { Authorization: `Bearer ${api.token}` } });
+        let existingGame = (await apiServices.executeQuery(api, "games", {
+            "appid": newGame.appid
+        })).data;
+
+        if (typeof existingGame === 'undefined' || existingGame.length == 0) {
+            let res = await apiServices.createDoc(api, "games", { ...newGame, "userIds": [userId] });
+            return res.data;
         } else {
+            existingGame = existingGame[0];
             if (existingGame.userIds.indexOf(userId) === -1) {
                 existingGame.userIds.push(userId);
             }
-            return await this.put(api, existingGame);
+            let res = await this.update(api, { ...existingGame, ...newGame });
+            return res.data;
         }
     },
-    createDatastore(api) {
-        return axios.post(`${api.url}/app/datastores`, { "name": "games" }, { headers: { Authorization: `Bearer ${api.token}` } });
-    },
-}
-
-function headers(api) {
-    return { headers: { Authorization: `Bearer ${api.token}` } };
 }
