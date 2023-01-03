@@ -2,7 +2,7 @@
 
 module.exports = async (data, props) => {
   return {
-    type: "widget",
+    type: "view",
     name: "navigator",
     coll: "users",
     query: {

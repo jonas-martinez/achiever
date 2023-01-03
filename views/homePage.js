@@ -37,7 +37,7 @@ module.exports = async (data, props) => {
                                 minWidth: 600
                             },
                             child: {
-                                type: "widget",
+                                type: "view",
                                 name: "gameList",
                                 coll: "games",
                                 query: {

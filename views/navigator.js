@@ -6,7 +6,7 @@ module.exports = (data, props) => {
     switch (data[0].nav) {
         case "firstTimePage":
             return {
-                type: "widget",
+                type: "view",
                 name: "firstTimePage",
                 coll: "users",
                 query: {
@@ -15,7 +15,7 @@ module.exports = (data, props) => {
             }
         case "homePage":
             return {
-                type: "widget",
+                type: "view",
                 name: "homePage",
                 coll: "users",
                 query: {
@@ -24,7 +24,7 @@ module.exports = (data, props) => {
             }
         case "gamePage":
             return {
-                type: "widget",
+                type: "view",
                 name: "gamePage",
                 coll: "users",
                 query: {
@@ -33,7 +33,7 @@ module.exports = (data, props) => {
             }
         default:
             return {
-                type: "widget",
+                type: "view",
                 name: "firstTimePage",
                 coll: "users",
                 query: {

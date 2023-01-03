@@ -1,18 +1,18 @@
 'use strict'
-// Widgets
+// Views
 
 module.exports = async () => {
   return {
-    widgets: {
-      main: require('./widgets/main'),
-      userData: require('./widgets/userData'),
-      firstTimePage: require('./widgets/firstTimePage'),
-      navigator: require('./widgets/navigator'),
-      homePage: require('./widgets/homePage'),
-      gamePage: require('./widgets/gamePage'),
-      gameList: require('./widgets/gameList'),
-      gameCard: require('./widgets/gameCard'),
-      gameCardAchievements: require('./widgets/gameCardAchievements'),
+    views: {
+      main: require('./views/main'),
+      userData: require('./views/userData'),
+      firstTimePage: require('./views/firstTimePage'),
+      navigator: require('./views/navigator'),
+      homePage: require('./views/homePage'),
+      gamePage: require('./views/gamePage'),
+      gameList: require('./views/gameList'),
+      gameCard: require('./views/gameCard'),
+      gameCardAchievements: require('./views/gameCardAchievements'),
     },
     listeners: {
       onSessionStart: require('./listeners/onSessionStart'),
@@ -22,6 +22,6 @@ module.exports = async () => {
       navigate: require('./listeners/navigator'),
       debug: require('./listeners/debug'),
     },
-    rootWidget: 'main'
+    rootView: 'main'
   }
 }
