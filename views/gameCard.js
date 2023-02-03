@@ -15,6 +15,10 @@ module.exports = async (data, props) => {
         },
         child: {
             type: "container",
+            constraints: {
+                minWidth: -1,
+                maxWidth: -1,
+            },
             padding: {
                 bottom: 1,
                 left: 1,

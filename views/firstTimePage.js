@@ -29,31 +29,37 @@ module.exports = (data, props) => {
                             maxWidth: 250,
                         },
                         child: {
-                            type: "textfield",
-                            value: "",
-                            style: {
-                                decoration: {
-                                    label: {
-                                        type: "text",
-                                        value: "Please enter your SteamID."
-                                    }
-                                }
-                            },
-                            onChanged: {
+                            type: "form",
+                            onSubmit: {
                                 action: "setSteamID"
                             },
+                            child: {
+                                type: "flex",
+                                direction: "vertical",
+                                children: [
+                                    {
+                                        type: "textfield",
+                                        value: "",
+                                        name: "steamID",
+                                        style: {
+                                            decoration: {
+                                                label: {
+                                                    type: "text",
+                                                    value: "Please enter your SteamID."
+                                                }
+                                            }
+                                        },
+                                    },
+                                    {
+                                        type: "button",
+                                        text: "Validate",
+                                        submit: true,
+                                    }
+                                ]
+                            }
                         },
                     },
-                    {
-                        type: "button",
-                        text: "Validate",
-                        onPressed: {
-                            action: "navigate",
-                            props: {
-                                page: "homePage"
-                            }
-                        }
-                    }
+
                 ]
             }
         ]

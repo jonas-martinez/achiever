@@ -32,14 +32,31 @@ module.exports = async (data, props) => {
                 spacing: 2,
                 children: [
                     {
-                        type: "text",
-                        style: {
-                            fontSize: 24
+                        type: "actionable",
+                        onPressed: {
+                            action: "navigate",
+                            props: {
+                                page: "homePage"
+                            }
                         },
-                        value: "Achiever"
+                        child: {
+                            type: "icon",
+                            value: "arrow_back"
+                        }
                     },
-
-
+                    {
+                        type: "flex",
+                        direction: "horizontal",
+                        children: [
+                            {
+                                type: "text",
+                                style: {
+                                    fontSize: 24
+                                },
+                                value: game.name
+                            }
+                        ]
+                    },
                 ]
             },
         ]
