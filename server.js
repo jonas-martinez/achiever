@@ -33,7 +33,10 @@ app.use(morgan(function (tokens, req, res) {
         tokens.status(req, res),
         tokens['response-time'](req, res), 'ms'
     ].join(' ')
+}, {
+    skip: function (req, res) { return res.statusCode < 400 }
 }))
+
 app.use(function addDefaultContentType(req, res, next) {
     // When no content-type is given, the body element is set to
     // nil, and has been a source of contention for new users.
