@@ -20,7 +20,15 @@ module.exports = {
     },
     executeQuery(api, coll, query) {
         return axios.post(`${api.url}/app/colls/${coll}/docs/find`, query, options(api)).catch((error) => console.log(error));
+    },
+
+    createWebhook(api, params) {
+        return axios.post(`${api.url}/app/webhooks`, params, options(api)).catch((error) => console.log(error));
+    },
+    triggerWebhook(api, uuid, props) {
+        return axios.post(`${api.url}/webhooks/${uuid}`, props, options(api)).catch((error) => console.log(error));
     }
+    // createTransaction
 }
 
 function options(api) {

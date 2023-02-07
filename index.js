@@ -21,6 +21,7 @@ module.exports = async () => {
       setSteamID: require('./listeners/setSteamID'),
       navigate: require('./listeners/navigator'),
       debug: require('./listeners/debug'),
+      getUserGames: require('./listeners/getUserGames'),
     },
     rootView: 'main'
   }
