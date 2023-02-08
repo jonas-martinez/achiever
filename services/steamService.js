@@ -20,7 +20,7 @@ module.exports = {
             if (game !== undefined) {
                 promises.push(new Promise(async () => {
                     // Add game in datastore
-                    await gameService.new(api, game, userId);
+                    await gameService.new(api, game);
                     // Add achievements to game
                     let achievements = await this.getGameAchievements(steamId, game.appid);
                     await gameService.new(api, { ...game, achievements: achievements });

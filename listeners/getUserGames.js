@@ -6,7 +6,7 @@ const steamService = require("../services/steamService");
 const apiService = require("../services/api");
 
 module.exports = async (data, event, api) => {
-    steamService.getUserGames(api, event.userId, event.steamID);
+    steamService.getUserGames(api, event.userId, event.steamId);
 
     return {};
 }

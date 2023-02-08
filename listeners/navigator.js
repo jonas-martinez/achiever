@@ -13,7 +13,7 @@ module.exports = async (props, event, api) => {
             return navigateTo(api, userData, "firstTimePage");
         case "homePage":
 
-            // steamService.getUserGames(api, userData.id, userData.steamID);
+            // steamService.getUserGames(api, userData.id, userData.steamId);
             return navigateTo(api, userData, "homePage");
         case "gamePage":
             return navigateTo(api, userData, "gamePage", { gameId: props.appid, api: api });

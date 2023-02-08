@@ -13,20 +13,16 @@ module.exports = {
     update(api, game) {
         return apiServices.updateDoc(api, "games", game);
     },
-    async new(api, newGame, userId) {
+    async new(api, newGame) {
         let existingGame = (await apiServices.executeQuery(api, "games", {
             "appid": newGame.appid
         })).data;
 
         if (typeof existingGame === 'undefined' || existingGame.length == 0) {
-            let res = await apiServices.createDoc(api, "games", { ...newGame, "userIds": [userId] });
+            let res = await apiServices.createDoc(api, "games", newGame);
             return res.data;
         } else {
-            existingGame = existingGame[0];
-            if (existingGame.userIds.indexOf(userId) === -1) {
-                existingGame.userIds.push(userId);
-            }
-            let res = await this.update(api, { ...existingGame, ...newGame });
+            let res = await this.update(api, { ...existingGame[0], ...newGame });
             return res.data;
         }
     },

@@ -40,7 +40,7 @@ module.exports = (data, props) => {
                                     {
                                         type: "textfield",
                                         value: "",
-                                        name: "steamID",
+                                        name: "steamId",
                                         style: {
                                             decoration: {
                                                 label: {

@@ -1,8 +1,12 @@
 'use strict'
 
 module.exports = async (data, props) => {
-    let minutesPlayed = props.playtime_forever % 60;
-    let hoursPlayed = Math.floor(props.playtime_forever / 60);
+    console.log("GAME CARD");
+    console.log(data);
+    console.log(props);
+    let game = data[0];
+    let minutesPlayed = game.playtime_forever % 60;
+    let hoursPlayed = Math.floor(game.playtime_forever / 60);
 
     return {
         type: "actionable",
@@ -47,7 +51,7 @@ module.exports = async (data, props) => {
                         children: [
                             {
                                 type: "text",
-                                value: props.name
+                                value: game.name
                             },
                             {
                                 type: "text",
