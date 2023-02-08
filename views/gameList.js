@@ -14,7 +14,11 @@ module.exports = async (data, props) => {
             return {
                 type: "view",
                 name: "gameCard",
-                props: game
+                props: game,
+                coll: "games",
+                query: {
+                    appid: game.appid
+                },
             }
         })
     }
@@ -22,4 +26,4 @@ module.exports = async (data, props) => {
 
 function paginate(array, page_size, page_number) {
     return array.slice((page_number - 1) * page_size, page_number * page_size);
-  }
+}

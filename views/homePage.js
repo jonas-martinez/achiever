@@ -39,9 +39,9 @@ module.exports = async (data, props) => {
                             child: {
                                 type: "view",
                                 name: "gameList",
-                                coll: "games",
+                                coll: "userGames",
                                 query: {
-                                    "userIds": "@me"
+                                    userId: "@me"
                                 },
                             }
                         }
