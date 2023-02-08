@@ -13,6 +13,7 @@ module.exports = async () => {
       gameList: require('./views/gameList'),
       gameCard: require('./views/gameCard'),
       gameCardAchievements: require('./views/gameCardAchievements'),
+      resetDatabaseButton: require('./views/resetDatabaseButton'),
     },
     listeners: {
       onSessionStart: require('./listeners/onSessionStart'),
@@ -22,6 +23,7 @@ module.exports = async () => {
       navigate: require('./listeners/navigator'),
       debug: require('./listeners/debug'),
       getUserGames: require('./listeners/getUserGames'),
+      resetDatabase: require('./listeners/resetDatabase'),
     },
     rootView: 'main'
   }
