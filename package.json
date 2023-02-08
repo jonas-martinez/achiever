@@ -1,13 +1,13 @@
 {
-  "name": "node12-template-hello-world",
+  "name": "achiever",
   "version": "1.0.0",
-  "description": "Lenra's node12 template hello world",
+  "description": "The Achiever app to track your steam achievements.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
-  "author": "Lenra",
+  "author": "Jonas Martinez",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.1",
