@@ -6,12 +6,12 @@ const userGameService = require('../services/userGameService');
 module.exports = async (data, props) => {
     console.log("GAME PAGE");
 
-    let gameId = data[0].navData.gameId;
-    let api = data[0].navData.api;
-    // TODO: Request game info
-    let game = await gameService.get(api, gameId);
-    // TODO: Request player achievements on this game
-    let userGame = await userGameService.get(api, gameId);
+    // let gameId = data[0].navData.gameId;
+    // let api = data[0].navData.api;
+    // // TODO: Request game info
+    // let game = await gameService.get(api, gameId);
+    // // TODO: Request player achievements on this game
+    // let userGame = await userGameService.get(api, gameId);
 
     return {
         type: "flex",
@@ -49,7 +49,7 @@ module.exports = async (data, props) => {
                                 style: {
                                     fontSize: 24
                                 },
-                                value: game.name
+                                value: `Game: ${data[0].appid}`
                             }
                         ]
                     },

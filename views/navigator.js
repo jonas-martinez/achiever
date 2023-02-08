@@ -26,9 +26,10 @@ module.exports = (data, props) => {
             return {
                 type: "view",
                 name: "gamePage",
-                coll: "users",
+                coll: "userGames",
                 query: {
-                    "id": "@me"
+                    "userId": "@me",
+                    "appid": data[0].navData.appid
                 }
             }
         default:
