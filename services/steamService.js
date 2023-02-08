@@ -19,20 +19,15 @@ module.exports = {
         games.games.forEach(game => {
             if (game !== undefined) {
                 promises.push(new Promise(async () => {
-                    // Add game in datastore
+                    // Add game in db
+                    // TODO: Remove useless fields such as playtime_xxx and others that are user related.
                     await gameService.new(api, game);
                     // Add achievements to game
                     let achievements = await this.getGameAchievements(steamId, game.appid);
                     await gameService.new(api, { ...game, achievements: achievements });
-                    // Add user game achievements in datastore
+                    // Add user game achievements and playtime in db
                     let unlockedAchievements = await this.getUserGameAchievements(steamId, game.appid);
-                    // TODO: Also add play time
-                    await userGameService.new(api, userId, { appid: game.appid, achieved: unlockedAchievements }, async () => {
-                        let userGame = await userGameService.get(api, game.appid);
-                        let userData = await userService.get(api);
-                        let unlockedAchievements = await userGameService.getUserGameAchievements(userData.steamId, userGame.appid);
-                        return await userGameService.put(api, userGame._id, { ...userGame, achieved: unlockedAchievements, playtime_forever: userGame.playtime_forever })
-                    });
+                    await userGameService.new(api, userId, { appid: game.appid, achieved: unlockedAchievements, playtime_forever: game.playtime_forever });
                 }).catch((error) => console.log(error)));
             }
         });
