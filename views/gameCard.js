@@ -1,9 +1,6 @@
 'use strict'
 
-module.exports = async (data, props) => {
-    console.log("GAME CARD");
-    console.log(data);
-    console.log(props);
+module.exports = async (data, userGame) => {
     let game = data[0];
     let minutesPlayed = game.playtime_forever % 60;
     let hoursPlayed = Math.floor(game.playtime_forever / 60);
@@ -14,7 +11,7 @@ module.exports = async (data, props) => {
             action: "navigate",
             props: {
                 page: "gamePage",
-                appid: props.appid,
+                appid: userGame.appid,
             }
         },
         child: {
@@ -41,7 +38,7 @@ module.exports = async (data, props) => {
                 children: [
                     {
                         type: "image",
-                        src: `https://cdn.cloudflare.steamstatic.com/steam/apps/${props.appid}/capsule_231x87.jpg`,
+                        src: `https://cdn.cloudflare.steamstatic.com/steam/apps/${userGame.appid}/capsule_231x87.jpg`,
                         // 349480 is the default image for games that don't have a picture
                     },
                     {
@@ -63,7 +60,7 @@ module.exports = async (data, props) => {
                                 coll: "userGames",
                                 query: {
                                     "userId": "@me",
-                                    "appid": props.appid
+                                    "appid": userGame.appid
                                 }
                             }
                         ]

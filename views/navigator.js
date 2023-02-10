@@ -25,7 +25,7 @@ module.exports = (data, props) => {
         case "gamePage":
             return {
                 type: "view",
-                name: "gamePage",
+                name: "gamePageContainer",
                 coll: "userGames",
                 query: {
                     "userId": "@me",
