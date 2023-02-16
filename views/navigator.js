@@ -1,46 +1,19 @@
 'use strict'
 
+const { View } = require("@lenra/components");
+
 module.exports = (data, props) => {
     console.log("NAVIGATOR");
     console.log(data);
     switch (data[0].nav) {
         case "firstTimePage":
-            return {
-                type: "view",
-                name: "firstTimePage",
-                coll: "users",
-                query: {
-                    "id": "@me"
-                }
-            }
+            return View("firstTimePage").coll("users").query({ id: "@me" })
         case "homePage":
-            return {
-                type: "view",
-                name: "homePage",
-                coll: "users",
-                query: {
-                    "id": "@me"
-                }
-            }
+            return View("homePage").coll("users").query({ id: "@me" })
         case "gamePage":
-            return {
-                type: "view",
-                name: "gamePageContainer",
-                coll: "userGames",
-                query: {
-                    "userId": "@me",
-                    "appid": data[0].navData.appid
-                }
-            }
+            return View("gamePageContainer").coll("userGames").query({ userId: "@me", appid: data[0].navData.appid })
         default:
-            return {
-                type: "view",
-                name: "firstTimePage",
-                coll: "users",
-                query: {
-                    "id": "@me"
-                }
-            }
+            return View("firstTimePage").coll("users").query({ id: "@me" })
     }
 
 }

@@ -1,22 +1,11 @@
 'use strict'
 
+const { Stack, View } = require('@lenra/components')
+
 module.exports = async (data, props) => {
-  return {
-    type: "stack",
-    children: [
-      {
-        type: "view",
-        name: "navigator",
-        coll: "users",
-        query: {
-          "id": "@me"
-        }
-      },
-      {
-        type: "view",
-        name: "resetDatabaseButton",
-      }
-    ]
-  }
+  return Stack(
+    View("navigator").coll("users").query({ id: "@me" }),
+    View("resetDatabaseButton")
+  )
 }
 

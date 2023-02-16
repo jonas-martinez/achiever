@@ -1,68 +1,35 @@
 'use strict'
 
-module.exports = (data, props) => {
-    return {
-        type: "flex",
-        direction: "horizontal",
-        mainAxisAlignment: "center",
-        crossAxisAlignment: "center",
-        fillParent: true,
-        children: [
-            {
-                type: "flex",
-                direction: "vertical",
-                mainAxisAlignment: "center",
-                crossAxisAlignment: "center",
-                fillParent: true,
-                children: [
-                    {
-                        type: "text",
-                        value: "Welcome to Achiever."
-                    },
-                    {
-                        type: "text",
-                        value: "The Steam Achievement tracking app."
-                    },
-                    {
-                        type: "container",
-                        constraints: {
-                            maxWidth: 250,
-                        },
-                        child: {
-                            type: "form",
-                            onSubmit: {
-                                action: "setSteamID"
-                            },
-                            child: {
-                                type: "flex",
-                                direction: "vertical",
-                                children: [
-                                    {
-                                        type: "textfield",
-                                        value: "",
-                                        name: "steamId",
-                                        style: {
-                                            decoration: {
-                                                label: {
-                                                    type: "text",
-                                                    value: "Please enter your SteamID."
-                                                }
-                                            }
-                                        },
-                                    },
-                                    {
-                                        type: "button",
-                                        text: "Validate",
-                                        submit: true,
-                                    }
-                                ]
-                            }
-                        },
-                    },
+const { Flex, Text, Container, Form, TextField, Button } = require("@lenra/components")
 
-                ]
-            }
-        ]
-    }
+module.exports = (data, props) => {
+    return Flex(
+        Flex(
+            Text("Welcome to Achiever."),
+            Text("The Steam Achievement tracking app."),
+            Container(
+                Form(
+                    Flex(
+                        TextField("").name("steamId").style({
+                            decoration: {
+                                label: Text("Please enter your SteamID.")
+                            }
+                        }),
+                        Button("Validate").submit(true)
+                    ).direction("vertical")
+                ).onSubmit("setSteamID")
+            ).constraints({
+                maxWidth: 250
+            })
+        )
+            .direction("vertical")
+            .mainAxisAlignment("center")
+            .crossAxisAlignment("center")
+            .fillParent(true)
+    )
+        .direction("horizontal")
+        .mainAxisAlignment("center")
+        .crossAxisAlignment("center")
+        .fillParent(true)
 }
 
