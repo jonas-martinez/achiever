@@ -8,7 +8,7 @@ module.exports = async (data, props) => {
     });
     data = paginate(data, 10, 1)
 
-    return Flex(...data.map(function (game) {
+    return Flex(data.map(function (game) {
         return View("gameCard").props(game).coll("games").query({ appid: game.appid })
     })).direction("vertical").scroll(true).spacing(2)
 }

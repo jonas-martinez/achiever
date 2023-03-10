@@ -1,7 +1,5 @@
 'use strict'
 
-
-
 module.exports = (data, props) => {
     var userData = data[0];
     console.log("USER DATA");
