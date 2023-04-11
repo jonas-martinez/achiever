@@ -193,10 +193,11 @@ app.post('/*', middleware);
 
 const port = process.env.http_port || 3000;
 
-app.listen(port, () => {
-    initManifest().then(() => {
-        console.log(`node12 listening on port: ${port}`)
-    }).catch(err => {
-        console.error(err);
+initManifest().then(() => {
+    app.listen(port, () => {
+        writeFileSync("/tmp/.lock", "\n");
+        console.log(`App listening on port: ${port}`)
     });
+}).catch(err => {
+    console.error(err);
 });
