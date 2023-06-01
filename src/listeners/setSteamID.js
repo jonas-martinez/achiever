@@ -3,7 +3,14 @@
 import userService from "../services/userService.js";
 import navigate from "../listeners/navigator.js";
 
-export default async function (data, event, api) {
+/**
+ * 
+ * @param {import("@lenra/app-server").props} props 
+ * @param {import("@lenra/app-server").event} event 
+ * @param {import("@lenra/app-server").Api} api
+ * @returns 
+ */
+export default async function (props, event, api) {
     let userData = await userService.get(api);
     userData.steamId = event.value.steamId;
     await userService.update(api, userData);
