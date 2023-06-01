@@ -1,6 +1,6 @@
 'use strict'
 
-import { Counter } from "../classes/Counter.js";
+import userService from "../services/userService.js";
 
 /**
  * 

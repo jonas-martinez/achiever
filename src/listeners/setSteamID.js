@@ -1,7 +1,6 @@
 'use strict'
 
 import userService from "../services/userService.js";
-import apiService from "../services/api.js";
 import navigate from "../listeners/navigator.js";
 
 export default async function (data, event, api) {
@@ -9,11 +8,11 @@ export default async function (data, event, api) {
     userData.steamId = event.value.steamId;
     await userService.update(api, userData);
 
-    let res = await apiService.createWebhook(api, {
+    let res = await api.data.createWebhook(api, {
         action: "getUserGames"
     })
 
-    await apiService.triggerWebhook(api, res.data.uuid, { userId: userData.id, steamId: userData.steamId });
+    await api.data.triggerWebhook(api, res.data.uuid, { userId: userData.id, steamId: userData.steamId });
 
     await navigate({ page: "homePage" }, {}, api);
 
