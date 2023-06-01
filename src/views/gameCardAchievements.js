@@ -1,8 +1,8 @@
 'use strict'
 
-const { Text } = require("@lenra/components")
+import { Text } from "@lenra/components"
 
-module.exports = async (data, props) => {
+export default async function (data, props) {
     return Text(`${data[0] != undefined ? data[0].achieved.length : 0} achievements`)
 }
 

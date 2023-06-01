@@ -1,6 +1,6 @@
 'use strict'
 
-const { default: axios } = require("axios");
+import axios from "axios";
 
 module.exports = {
     get_all(api, coll) {

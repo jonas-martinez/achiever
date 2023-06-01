@@ -1,8 +1,8 @@
 'use strict'
 
-const gameService = require('../services/gameService');
-const userGameService = require('../services/userGameService');
+import gameService from '../services/gameService';
+import userGameService from '../services/userGameService';
 
-module.exports = async (props, event, api) => {
+export default async function (props, event, api) {
     return {};
 }

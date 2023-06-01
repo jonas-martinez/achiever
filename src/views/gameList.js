@@ -1,8 +1,8 @@
 'use strict'
 
-const { Flex, View } = require("@lenra/components");
+import { Flex, View } from "@lenra/components";
 
-module.exports = async (data, props) => {
+export default async function (data, props) {
     data.sort(function (a, b) {
         return b.playtime_forever - a.playtime_forever;
     });

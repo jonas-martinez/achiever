@@ -1,8 +1,8 @@
 'use strict'
 
-const { Stack, View } = require('@lenra/components')
+import { Stack, View } from '@lenra/components'
 
-module.exports = async (data, props) => {
+export default async function (data, props) {
   return Stack(
     [
       View("navigator").coll("users").query({ id: "@me" }),

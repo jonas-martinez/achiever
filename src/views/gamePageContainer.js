@@ -1,10 +1,10 @@
 'use strict'
 
-const { View } = require('@lenra/components');
-const gameService = require('../services/gameService');
-const userGameService = require('../services/userGameService');
+import { View } from '@lenra/components';
+import gameService from '../services/gameService';
+import userGameService from '../services/userGameService';
 
-module.exports = async (data, props) => {
+export default async function (data, props) {
     let userGame = data[0];
 
     return View("gamePage").coll("games").query({ appid: userGame.appid }).props(userGame)

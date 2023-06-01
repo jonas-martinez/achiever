@@ -1,8 +1,8 @@
 'use strict'
 
-const { Actionable, Container, Image, Text, View, Flex } = require("@lenra/components");
+import { Actionable, Container, Image, Text, View, Flex } from "@lenra/components";
 
-module.exports = async (data, userGame) => {
+export default async function (data, userGame) {
     let game = data[0];
     let minutesPlayed = game.playtime_forever % 60;
     let hoursPlayed = Math.floor(game.playtime_forever / 60);

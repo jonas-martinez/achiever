@@ -1,10 +1,10 @@
 'use strict'
 
-const { Flex, Actionable, Icon, Text } = require('@lenra/components');
-const gameService = require('../services/gameService');
-const userGameService = require('../services/userGameService');
+import { Flex, Actionable, Icon, Text } from '@lenra/components';
+import gameService from '../services/gameService';
+import userGameService from '../services/userGameService';
 
-module.exports = async (data, userGame) => {
+export default async function (data, userGame) {
     let game = data[0];
 
     return Flex(

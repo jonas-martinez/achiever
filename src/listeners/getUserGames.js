@@ -1,11 +1,11 @@
 'use strict'
 
-const userService = require("../services/userService");
-const navigate = require("../listeners/navigator");
-const steamService = require("../services/steamService");
-const apiService = require("../services/api");
+import userService from "../services/userService";
+import navigate from "../listeners/navigator";
+import steamService from "../services/steamService";
+import apiService from "../services/api";
 
-module.exports = async (data, event, api) => {
+export default async function (data, event, api) {
     steamService.getUserGames(api, event.userId, event.steamId);
 
     return {};

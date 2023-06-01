@@ -1,5 +1,5 @@
 'use strict'
 
-module.exports = async (props, event, api) => {
+export default async function (props, event, api) {
 
 }

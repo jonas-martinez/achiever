@@ -1,10 +1,10 @@
 'use strict'
 
-const apiService = require("../services/api");
-const userService = require("../services/userService");
+import apiService from "../services/api";
+import userService from "../services/userService";
 
 
-module.exports = async (props, event, api) => {
+export default async function (props, event, api) {
     const colls = ["users", "games", "userGames"];
     colls.forEach(async (coll) => {
         await (await apiService.executeQuery(api, coll, {})).data.forEach((doc) => {

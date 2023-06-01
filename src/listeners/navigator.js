@@ -1,10 +1,10 @@
 'use strict'
 
-const userService = require("../services/userService");
-const steamService = require("../services/steamService");
+import userService from "../services/userService";
+import steamService from "../services/steamService";
 
 
-module.exports = async (props, event, api) => {
+export default async function (props, event, api) {
     var userData = await userService.get(api);
     console.log("NAVIGATOR");
     console.log(userData);

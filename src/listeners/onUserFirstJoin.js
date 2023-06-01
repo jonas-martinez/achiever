@@ -1,8 +1,8 @@
 'use strict'
 
-const userService = require("../services/userService");
+import userService from "../services/userService";
 
-module.exports = async (props, event, api) => {
+export default async function (props, event, api) {
     await userService.create(api, {
         id: "@me",
         nav: "firstTimePage"

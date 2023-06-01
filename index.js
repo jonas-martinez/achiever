@@ -1,7 +1,7 @@
 'use strict'
 // Views
 
-module.exports = async () => {
+export default async function () {
   return {
     views: {
       main: require('./views/main'),

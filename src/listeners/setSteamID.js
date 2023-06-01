@@ -1,10 +1,10 @@
 'use strict'
 
-const userService = require("../services/userService");
-const apiService = require("../services/api");
-const navigate = require("../listeners/navigator");
+import userService from "../services/userService";
+import apiService from "../services/api";
+import navigate from "../listeners/navigator";
 
-module.exports = async (data, event, api) => {
+export default async function (data, event, api) {
     let userData = await userService.get(api);
     userData.steamId = event.value.steamId;
     await userService.update(api, userData);

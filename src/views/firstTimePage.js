@@ -1,8 +1,8 @@
 'use strict'
 
-const { Flex, Text, Container, Form, TextField, Button } = require("@lenra/components")
+import { Flex, Text, Container, Form, TextField, Button } from "@lenra/components";
 
-module.exports = (data, props) => {
+export default function (data, props) {
     return Flex(
         [
             Flex(

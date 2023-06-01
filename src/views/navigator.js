@@ -1,8 +1,8 @@
 'use strict'
 
-const { View } = require("@lenra/components");
+import { View } from "@lenra/components";
 
-module.exports = (data, props) => {
+export default function (data, props) {
     console.log("NAVIGATOR");
     console.log(data);
     switch (data[0].nav) {

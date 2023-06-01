@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (data, props) => {
+export default function (data, props) {
     var userData = data[0];
     console.log("USER DATA");
     console.log(data);

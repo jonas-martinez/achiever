@@ -1,7 +1,7 @@
 'use strict'
 
-const { default: axios } = require("axios");
-const apiServices = require('./api');
+import axios from "axios";
+import apiServices from './api';
 
 module.exports = {
     get(api) {

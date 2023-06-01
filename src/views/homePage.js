@@ -1,8 +1,8 @@
 'use strict'
 
-const { Flex, Text, Button, Flexible, Container, View } = require('@lenra/components')
+import { Flex, Text, Button, Flexible, Container, View } from '@lenra/components'
 
-module.exports = async (data, props) => {
+export default async function (data, props) {
     return Flex(
         [
             Flex(
