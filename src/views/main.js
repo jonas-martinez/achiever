@@ -1,14 +1,13 @@
-import { Flex, View } from "@lenra/components";
-import { views } from "../index.gen.js";
+'use strict'
 
-export default function (_data, _props) {
-  return Flex([
-    View(views.menu),
-    View(views.home)
-  ])
-    .direction("vertical")
-    .scroll(true)
-    .spacing(4)
-    .crossAxisAlignment("center")
+const { Stack, View } = require('@lenra/components')
+
+module.exports = async (data, props) => {
+  return Stack(
+    [
+      View("navigator").coll("users").query({ id: "@me" }),
+      View("resetDatabaseButton")
+    ]
+  )
 }
 

@@ -1,8 +1,8 @@
 'use strict'
 
-const userService = require("../services/userService");
-const steamService = require("../services/steamService");
-const userGameService = require("../services/userGameService");
+const userService = require("../../services/userService");
+const steamService = require("../../services/steamService");
+const userGameService = require("../../services/userGameService");
 
 
 module.exports = async (props, event, api) => {
