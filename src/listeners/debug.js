@@ -1,8 +1,7 @@
 'use strict'
 
-import userService from "../../services/userService";
-import steamService from "../../services/steamService";
-import userGameService from "../../services/userGameService";
+import userService from "../services/userService.js";
+import userGameService from "../services/userGameService.js";
 
 
 export default async function (props, event, api) {

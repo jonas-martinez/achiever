@@ -1,8 +1,6 @@
 'use strict'
 
 import { Flex, Actionable, Icon, Text } from '@lenra/components';
-import gameService from '../services/gameService';
-import userGameService from '../services/userGameService';
 
 export default async function (data, userGame) {
     let game = data[0];

@@ -1,9 +1,8 @@
 'use strict'
 
-import axios from "axios";
-import apiServices from './api';
+import apiServices from './api.js';
 
-module.exports = {
+export default {
     get(api) {
         return apiServices.executeQuery(api, "users", {
             "id": "@me"

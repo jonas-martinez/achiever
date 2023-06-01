@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-module.exports = {
+export default {
     get_all(api, coll) {
         return axios.get(`${api.url}/app/colls/${coll}/docs`, options(api)).catch((error) => console.log(error));
     },

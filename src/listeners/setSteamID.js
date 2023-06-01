@@ -1,8 +1,8 @@
 'use strict'
 
-import userService from "../services/userService";
-import apiService from "../services/api";
-import navigate from "../listeners/navigator";
+import userService from "../services/userService.js";
+import apiService from "../services/api.js";
+import navigate from "../listeners/navigator.js";
 
 export default async function (data, event, api) {
     let userData = await userService.get(api);

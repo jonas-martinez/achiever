@@ -1,7 +1,7 @@
 'use strict'
 
-import apiService from "../services/api";
-import userService from "../services/userService";
+import apiService from "../services/api.js";
+import userService from "../services/userService.js";
 
 
 export default async function (props, event, api) {

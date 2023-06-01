@@ -1,15 +1,14 @@
 'use strict'
 
 import axios from "axios";
-import gameService from '../services/gameService';
-import userGameService from "./userGameService";
-import userService from "./userService";
-import apiServices from './api';
+import gameService from '../services/gameService.js';
+import userGameService from "./userGameService.js";
+import apiServices from './api.js';
 
 const steamAPIKey = "CA8F42C8DC798264FCF69D088BB2E918";
 const steamAPIBaseUrl = "https://api.steampowered.com";
 
-module.exports = {
+export default {
     getUserSteamIDFromVanity(vanityUrl) {
         return axios.get(`${steamAPIBaseUrl}/ISteamUser/ResolveVanityURL/v0001/?key=${steamAPIKey}&vanityurl=${vanityUrl}`).then((value) => value.data.response).catch((error) => console.log(error));
     },

@@ -1,8 +1,6 @@
 'use strict'
 
-import userService from "../services/userService";
-import steamService from "../services/steamService";
-
+import userService from "../services/userService.js";
 
 export default async function (props, event, api) {
     var userData = await userService.get(api);
