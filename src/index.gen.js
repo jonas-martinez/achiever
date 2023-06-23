@@ -5,6 +5,7 @@ export const views = {
 	"gameList": "gameList",
 	"gamePage": "gamePage",
 	"gamePageContainer": "gamePageContainer",
+	"gamePageDataProvider": "gamePageDataProvider",
 	"homePage": "homePage",
 	"main": "main",
 	"navigator": "navigator",

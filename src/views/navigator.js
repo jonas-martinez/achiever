@@ -3,8 +3,6 @@
 import { View } from "@lenra/components";
 
 export default function (data, props) {
-    console.log("NAVIGATOR");
-    console.log(data);
     switch (data[0].nav) {
         case "firstTimePage":
             return View("firstTimePage").coll("users").query({ id: "@me" })

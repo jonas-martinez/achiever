@@ -1,6 +1,8 @@
 'use strict'
 
 import { Flex, Text, Button, Flexible, Container, View } from '@lenra/components'
+import { UserGame } from '../classes/UserGame.js';
+import { DataApi } from '@lenra/app-server';
 
 export default async function (data, props) {
     return Flex(
@@ -11,7 +13,7 @@ export default async function (data, props) {
                     Button("DEBUG BUTTON").onPressed("debug"),
                     Flexible(
                         Container(
-                            View("gameList").coll("userGames").query({ userId: "@me" })
+                            View("gameList").data(DataApi.collectionName(UserGame), { user: "@me" }),
                         ).maxWidth(600).maxHeight(600)
                     )
                 ]

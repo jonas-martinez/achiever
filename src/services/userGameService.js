@@ -1,23 +1,43 @@
 'use strict'
 
-import apiServices from './api.js';
+import { UserGame } from '../classes/UserGame.js';
 
 export default {
+    /**
+     * 
+     * @param {import("@lenra/app-server").Api} api 
+     * @param {Number} gameId
+     */
     get(api, gameId) {
-        return apiServices.executeQuery(api, "userGames", {
+        return api.data.find(UserGame, {
             "id": "@me",
             "appid": gameId
         }).then((value) => value.data[0]);
     },
+    /**
+     * 
+     * @param {import("@lenra/app-server").Api} api 
+     */
     get_all(api) {
-        return apiServices.executeQuery(api, "userGames", {
+        return api.data.find(UserGame, {
             "id": "@me"
         }).then((value) => value.data);
     },
-    async new(api, userId, newUserGame) {
-        return await apiServices.createDoc(api, "userGames", { ...newUserGame, "userId": userId });
+    /**
+     * 
+     * @param {import("@lenra/app-server").Api} api 
+     * @param {UserGame} userGame
+     */
+    async new(api, userGame) {
+        return await api.data.createDoc(userGame);
     },
-    put(api, userGameId, data) {
-        return apiServices.updateDoc(api, "userGames", { "_id": userGameId, ...data })
+    /**
+     * 
+     * @param {import("@lenra/app-server").Api} api 
+     * @param {string} userGameId
+     * @param {UserGame} userGame
+     */
+    put(api, userGameId, userGame) {
+        return api.data.updateDoc({ "_id": userGameId, ...userGame })
     }
 };

@@ -3,6 +3,8 @@
 import { Flex, View } from "@lenra/components";
 
 export default async function (data, props) {
+    console.log("gameLIST");
+    console.log(data);
     data.sort(function (a, b) {
         return b.playtime_forever - a.playtime_forever;
     });

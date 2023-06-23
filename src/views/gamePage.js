@@ -2,7 +2,13 @@
 
 import { Flex, Actionable, Icon, Text } from '@lenra/components';
 
-export default async function (data, userGame) {
+export default async function (data, userGame, context) {
+    // { pathParams: { appid: 730 } }
+
+    // TODO: Find a way to get the game from the pathParams' appid
+    console.log("GAMEPAGE");
+    console.log(data);
+    console.log(userGame);
     let game = data[0];
 
     return Flex(
@@ -11,7 +17,7 @@ export default async function (data, userGame) {
                 [
                     Actionable(
                         Icon("arrow_back")
-                    ).onPressed("navigate", { page: "homePage" }),
+                    ).onPressed("@lenra:navTo", { path: "/" }),
                     Flex(
                         [
                             Text(`${game.name}`).style({ fontSize: 24 })

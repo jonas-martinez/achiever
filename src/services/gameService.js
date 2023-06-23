@@ -1,27 +1,46 @@
 'use strict'
 
-import apiServices from './api.js';
+import { Game } from '../classes/Game.js';
 
 export default {
+    /**
+     * 
+     * @param {import("@lenra/app-server").Api} api 
+     * @param {Number} gameId
+     */
     get(api, gameId) {
-        return apiServices.executeQuery(api, "games", { "appid": gameId }).then((value) => value.data[0]);
+        return api.data.find(Game, { "appid": gameId }).then((value) => value.data[0]);
     },
+    /**
+     * 
+     * @param {import("@lenra/app-server").Api} api 
+     */
     get_all(api) {
-        return apiServices.get_all(api, "games").then((value) => value.data);
+        return api.data.find(Game, {}).then((value) => value.data);
     },
+    /**
+     * 
+     * @param {import("@lenra/app-server").Api} api 
+     * @param {Game} game 
+     */
     update(api, game) {
-        return apiServices.updateDoc(api, "games", game);
+        return api.data.updateDoc(game);
     },
-    async new(api, newGame) {
-        let existingGame = (await apiServices.executeQuery(api, "games", {
-            "appid": newGame.appid
+    /**
+     * 
+     * @param {import("@lenra/app-server").Api} api 
+     * @param {Game} game 
+     */
+    async new(api, game) {
+        let existingGame = (await api.data.find(Game, {
+            "appid": game.appid
         })).data;
 
         if (typeof existingGame === 'undefined' || existingGame.length == 0) {
-            let res = await apiServices.createDoc(api, "games", newGame);
+            let res = await api.data.createDoc(game);
             return res.data;
         } else {
-            let res = await this.update(api, { ...existingGame[0], ...newGame });
+            let res = await this.update(api, { ...existingGame[0], ...game });
             return res.data;
         }
     },

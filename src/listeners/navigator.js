@@ -12,8 +12,6 @@ import userService from "../services/userService.js";
  */
 export default async function (props, event, api) {
     var userData = await userService.get(api);
-    console.log("NAVIGATOR");
-    console.log(userData);
     switch (props.page) {
         case "firstTimePage":
             return navigateTo(api, userData, "firstTimePage");

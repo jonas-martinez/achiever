@@ -42,6 +42,6 @@ export default async function (data, userGame) {
                 right: {},
                 top: {}
             })
-    ).onPressed("navigate", { page: "gamePage", appid: userGame.appid })
+    ).onPressed("@lenra:navTo", { path: `/game/${userGame.appid}` })
 }
 

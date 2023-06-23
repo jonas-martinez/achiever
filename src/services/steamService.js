@@ -4,6 +4,8 @@ import axios from "axios";
 import gameService from '../services/gameService.js';
 import userGameService from "./userGameService.js";
 import apiServices from './api.js';
+import { Game } from "../classes/Game.js";
+import { UserGame } from "../classes/UserGame.js";
 
 const steamAPIKey = "CA8F42C8DC798264FCF69D088BB2E918";
 const steamAPIBaseUrl = "https://api.steampowered.com";
@@ -18,15 +20,15 @@ export default {
         games.games.forEach(game => {
             if (game !== undefined) {
                 promises.push(new Promise(async () => {
-                    // Add game in db
-                    // TODO: Remove useless fields such as playtime_xxx and others that are user related.
-                    await gameService.new(api, game);
                     // Add achievements to game
                     let achievements = await this.getGameAchievements(steamId, game.appid);
-                    await gameService.new(api, { ...game, achievements: achievements });
+
+                    // Add game in db
+                    await gameService.new(api, new Game(game.appid, achievements, game.img_icon_url, game.name));
                     // Add user game achievements and playtime in db
                     let unlockedAchievements = await this.getUserGameAchievements(steamId, game.appid);
-                    await userGameService.new(api, userId, { appid: game.appid, achieved: unlockedAchievements, playtime_forever: game.playtime_forever });
+
+                    await userGameService.new(api, new UserGame(game.appid, unlockedAchievements, userId, game.playtime_forever));
                 }).catch((error) => console.log(error)));
             }
         });
