@@ -19,12 +19,11 @@ generator:
       - node_modules/@lenra/app-server/dist/bin/app-lenra.js
     envs:
       NODE_ENV: production
+      MAX_RAW_SIZE: 50mb
+      MAX_JSON_SIZE: 50mb
     ports:
       - 3000
     ignores:
       - "**"
       - "!/*.json"
       - "!/src/"
-dev:
-  devtool:
-    tag: alpha
