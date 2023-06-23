@@ -1,11 +1,13 @@
 'use strict'
 
+import { DataApi } from "@lenra/app-server";
 import { Actionable, Container, Image, Text, View, Flex } from "@lenra/components";
+import { UserGame } from "../classes/UserGame.js";
 
 export default async function (data, userGame) {
     let game = data[0];
-    let minutesPlayed = game.playtime_forever % 60;
-    let hoursPlayed = Math.floor(game.playtime_forever / 60);
+    let minutesPlayed = userGame.playtimeForever % 60;
+    let hoursPlayed = Math.floor(userGame.playtimeForever / 60);
 
     return Actionable(
         Container(
@@ -17,7 +19,7 @@ export default async function (data, userGame) {
                         [
                             Text(game.name),
                             Text(`${hoursPlayed}h ${minutesPlayed}m`),
-                            View("gameCardAchievements").coll("userGames").query({
+                            View("gameCardAchievements").data(DataApi.collectionName(UserGame), {
                                 userId: "@me",
                                 appid: userGame.appid
                             })

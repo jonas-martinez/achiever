@@ -1,17 +1,17 @@
 'use strict'
 
+import { DataApi } from "@lenra/app-server";
 import { Flex, View } from "@lenra/components";
+import { Game } from "../classes/Game.js";
 
-export default async function (data, props) {
-    console.log("gameLIST");
-    console.log(data);
-    data.sort(function (a, b) {
-        return b.playtime_forever - a.playtime_forever;
+export default async function (userGames, props) {
+    userGames.sort(function (a, b) {
+        return b.playtimeForever - a.playtimeForever;
     });
-    data = paginate(data, 10, 1)
+    userGames = paginate(userGames, 10, 1)
 
-    return Flex(data.map(function (game) {
-        return View("gameCard").props(game).coll("games").query({ appid: game.appid })
+    return Flex(userGames.map(function (userGame) {
+        return View("gameCard").props(userGame).data(DataApi.collectionName(Game), { appid: userGame.appid });
     })).direction("vertical").scroll(true).spacing(2)
 }
 
