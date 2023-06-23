@@ -1,10 +1,8 @@
 export const views = {
 	"firstTimePage": "firstTimePage",
 	"gameCard": "gameCard",
-	"gameCardAchievements": "gameCardAchievements",
 	"gameList": "gameList",
 	"gamePage": "gamePage",
-	"gamePageContainer": "gamePageContainer",
 	"gamePageDataProvider": "gamePageDataProvider",
 	"homePage": "homePage",
 	"main": "main",

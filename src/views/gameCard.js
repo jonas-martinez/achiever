@@ -19,10 +19,7 @@ export default async function (data, userGame) {
                         [
                             Text(game.name),
                             Text(`${hoursPlayed}h ${minutesPlayed}m`),
-                            View("gameCardAchievements").data(DataApi.collectionName(UserGame), {
-                                userId: "@me",
-                                appid: userGame.appid
-                            })
+                            Text(`${userGame.achieved.length} achievements`)
                         ]
                     ).direction("vertical").spacing(1)
                 ]

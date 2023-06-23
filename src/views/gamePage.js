@@ -2,15 +2,7 @@
 
 import { Flex, Actionable, Icon, Text } from '@lenra/components';
 
-export default async function (data, userGame, context) {
-    // { pathParams: { appid: 730 } }
-
-    // TODO: Find a way to get the game from the pathParams' appid
-    console.log("GAMEPAGE");
-    console.log(data);
-    console.log(userGame);
-    let game = data[0];
-
+export default async function ([game], _props, _context) {
     return Flex(
         [
             Flex(
