@@ -16,7 +16,7 @@ export default async function ([game], _props, _context) {
                         ]
                     ).direction("horizontal")
                 ]
-            ).direction("vertical").mainAxisAlignment("center").crossAxisAlignment("center").spacing(2)
+            ).direction("horizontal").mainAxisAlignment("center").crossAxisAlignment("center").spacing(2)
         ]
     ).direction("horizontal").mainAxisAlignment("center").crossAxisAlignment("center").fillParent(true)
 }

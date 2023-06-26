@@ -13,21 +13,20 @@ import { DataApi } from "@lenra/app-server";
  */
 export default async function (props, event, api) {
     // TODO: Link games to steamID
+    let webhook = (await createWebhook(api, {
+        action: "getUserGames"
+    })).data;
+
     let userData = (await api.data.find(User, { id: "@me" }))[0];
 
     if (userData == undefined) {
-        userData = await api.data.createDoc(new User("@me", event.value.steamId));
+        userData = await api.data.createDoc(new User("@me", event.value.steamId, webhook.uuid));
     } else {
         userData.steamId = event.value.steamId;
-        await api.data.updateDoc(new User(userData.id, event.value.steamId));
+        await api.data.updateDoc(new User(userData.id, event.value.steamId, webhook.uuid));
     }
 
-
-    let res = await createWebhook(api, {
-        action: "getUserGames"
-    })
-
-    await triggerWebhook(api, res.data.uuid, { userId: userData.id, steamId: userData.steamId });
+    // await triggerWebhook(api, webhook.uuid, { userId: userData.id, steamId: userData.steamId });
 
     return {};
 }

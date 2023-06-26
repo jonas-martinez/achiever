@@ -7,7 +7,7 @@ export const lenraRoutes = [
     {
         path: "/",
         view: GuardsModule([], {
-            page: View("homePage"),
+            page: View("homePage").data(DataApi.collectionName(User), { id: "@me" }).context({ me: true }),
             guards: [
                 View("guards.firstTimeGuard")
                     .data(DataApi.collectionName(User), { id: "@me" }).context({ me: true }),
