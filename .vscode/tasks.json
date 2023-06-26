@@ -6,6 +6,21 @@
 			"script": "index",
 			"problemMatcher": [],
 			"label": "npm: index"
+		},
+		{
+			"label": "lenra-start",
+			"type": "shell",
+			"command": "lenra start",
+			"dependsOn": [
+				"lenra-build"
+			],
+			"group": "build"
+		},
+		{
+			"label": "lenra-build",
+			"type": "shell",
+			"command": "lenra build --expose mongo",
+			"group": "build"
 		}
 	]
 }

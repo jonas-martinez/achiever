@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import userService from "../services/userService.js";
-import navigate from "../listeners/navigator.js";
 
 /**
  * 
@@ -12,17 +11,22 @@ import navigate from "../listeners/navigator.js";
  * @returns 
  */
 export default async function (props, event, api) {
+    // TODO: Link games to steamID
     let userData = await userService.get(api);
-    userData.steamId = event.value.steamId;
-    await userService.update(api, userData);
+
+    if (userData == undefined) {
+        userData = (await userService.create(api, { id: "@me", steamId: event.value.steamId })).data;
+    } else {
+        userData.steamId = event.value.steamId;
+        await userService.update(api, userData);
+    }
+
 
     let res = await createWebhook(api, {
         action: "getUserGames"
     })
 
     await triggerWebhook(api, res.data.uuid, { userId: userData.id, steamId: userData.steamId });
-
-    await navigate({ page: "homePage" }, {}, api);
 
     return {};
 }

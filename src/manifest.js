@@ -1,35 +1,25 @@
+import { View } from "@lenra/components"
+import GuardsModule from './views/guards/_guards.js'
+
 export const lenraRoutes = [
     {
         path: "/",
-        view: {
-            type: "view",
-            name: "main",
-            context: {
-                pathParams: true
-            }
-        }
+        view: GuardsModule([], {
+            page: View("homePage"),
+            guards: [
+                View("guards.firstTimeGuard")
+                    .data("users", { id: "@me" }).context({ me: true }),
+            ],
+        }).context({ pathParams: true })
     },
     {
         path: "/game/:appid",
-        view: {
-            type: "view",
-            name: "gamePageDataProvider",
-            context: {
-                pathParams: true
-            }
-        }
+        view: GuardsModule([], {
+            page: View("gamePageDataProvider"),
+            guards: [
+                View("guards.firstTimeGuard")
+                    .data("users", { id: "@me" }).context({ me: true }),
+            ],
+        }).context({ pathParams: true })
     },
-    {
-        path: "/first-time",
-        view: {
-            type: "view",
-            name: "firstTimePage",
-            find: {
-                coll: "users",
-                query: {
-                    id: "@me"
-                }
-            }
-        }
-    }
 ]

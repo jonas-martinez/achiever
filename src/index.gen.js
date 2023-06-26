@@ -4,16 +4,17 @@ export const views = {
 	"gameList": "gameList",
 	"gamePage": "gamePage",
 	"gamePageDataProvider": "gamePageDataProvider",
+	"guards": {
+		"_guards": "guards._guards",
+		"firstTimeGuard": "guards.firstTimeGuard"
+	},
 	"homePage": "homePage",
-	"main": "main",
-	"navigator": "navigator",
 	"resetDatabaseButton": "resetDatabaseButton",
 	"userData": "userData"
 };
 export const listeners = {
 	"debug": "debug",
 	"getUserGames": "getUserGames",
-	"navigator": "navigator",
 	"onEnvStart": "onEnvStart",
 	"onSessionStart": "onSessionStart",
 	"onUserFirstJoin": "onUserFirstJoin",
