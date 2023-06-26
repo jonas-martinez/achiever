@@ -1,7 +1,5 @@
 'use strict'
 
-import userService from "../services/userService.js";
-
 /**
  * 
  * @param {import("@lenra/app-server").props} _props 

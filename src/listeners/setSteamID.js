@@ -1,7 +1,8 @@
 'use strict'
 
 import axios from "axios";
-import userService from "../services/userService.js";
+import { User } from "../classes/User.js";
+import { DataApi } from "@lenra/app-server";
 
 /**
  * 
@@ -12,13 +13,13 @@ import userService from "../services/userService.js";
  */
 export default async function (props, event, api) {
     // TODO: Link games to steamID
-    let userData = await userService.get(api);
+    let userData = (await api.data.find(User, { id: "@me" }))[0];
 
     if (userData == undefined) {
-        userData = (await userService.create(api, { id: "@me", steamId: event.value.steamId })).data;
+        userData = await api.data.createDoc(new User("@me", event.value.steamId));
     } else {
         userData.steamId = event.value.steamId;
-        await userService.update(api, userData);
+        await api.data.updateDoc(new User(userData.id, event.value.steamId));
     }
 
 

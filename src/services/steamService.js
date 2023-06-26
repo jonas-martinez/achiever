@@ -53,8 +53,4 @@ export default {
             return [];
         }
     },
-    put(api, userId, data) {
-        return apiServices.updateDoc(api, "users", { "id": userId, ...data });
-        //return axios.put(`${api.url}/app/datastores/_users/data/${userId}`, data, headers(api));
-    }
 }

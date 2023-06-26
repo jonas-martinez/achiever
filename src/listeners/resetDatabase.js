@@ -1,7 +1,10 @@
 'use strict'
 
-import userService from "../services/userService.js";
+import { User } from "../classes/User.js";
+import { Game } from "../classes/Game.js";
+import { UserGame } from "../classes/UserGame.js";
 import apiServices from "../services/api.js";
+import { DataApi } from "@lenra/app-server";
 
 /**
  * 
@@ -11,7 +14,7 @@ import apiServices from "../services/api.js";
  * @returns 
  */
 export default async function (props, event, api) {
-    const colls = ["users", "games", "userGames"];
+    const colls = [DataApi.collectionName(User), DataApi.collectionName(Game), DataApi.collectionName(UserGame)];
     colls.forEach(async (coll) => {
         await (await apiServices.executeQuery(api, coll, {})).data.forEach((doc) => {
             apiServices.deleteDoc(api, coll, doc);
