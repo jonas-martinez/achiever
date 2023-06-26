@@ -16,7 +16,7 @@ import { DataApi } from "@lenra/app-server";
 export default async function (props, event, api) {
     const colls = [DataApi.collectionName(User), DataApi.collectionName(Game), DataApi.collectionName(UserGame)];
     colls.forEach(async (coll) => {
-        await (await apiServices.executeQuery(api, coll, {})).data.forEach((doc) => {
+        await (await api.data.find(coll, {})).forEach((doc) => {
             apiServices.deleteDoc(api, coll, doc);
         });
     });

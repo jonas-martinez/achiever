@@ -3,7 +3,6 @@
 import axios from "axios";
 import gameService from '../services/gameService.js';
 import userGameService from "./userGameService.js";
-import apiServices from './api.js';
 import { Game } from "../classes/Game.js";
 import { UserGame } from "../classes/UserGame.js";
 
