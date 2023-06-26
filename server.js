@@ -4,12 +4,12 @@
 
 "use strict"
 
-const express = require('express');
-const { writeFileSync } = require('fs');
-const morgan = require('morgan');
+import express from 'express';
+import { writeFileSync } from 'fs';
+import morgan from 'morgan';
 const app = express();
 
-const manifestHandler = require('./index.js');
+import manifestHandler from './index.js';
 const defaultMaxSize = '50mb'; // body-parser default
 
 const rawLimit = process.env.MAX_RAW_SIZE || defaultMaxSize;

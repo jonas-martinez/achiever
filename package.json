@@ -1,19 +1,20 @@
 {
-  "name": "achiever",
+  "name": "javascript-template",
   "version": "1.0.0",
-  "description": "The Achiever app to track your steam achievements.",
-  "main": "server.js",
+  "description": "Lenra's javascript template",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "start": "app-lenra",
+    "index": "app-lenra index",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "debug": "touch /tmp/.lock && node --inspect-brk=0.0.0.0:9229 node_modules/@lenra/app-server/dist/bin/app-lenra.js"
   },
   "keywords": [],
-  "author": "Jonas Martinez",
+  "author": "Lenra",
   "license": "MIT",
   "dependencies": {
-    "@lenra/components": "^1.0.0-beta.4",
-    "axios": "^0.27.1",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "morgan": "^1.10.0"
+    "@lenra/app-server": "^1.0.0-beta.4",
+    "@lenra/components": "^1.0.0-beta.7"
   }
 }
