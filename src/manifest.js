@@ -9,8 +9,9 @@ export const lenraRoutes = [
         view: GuardsModule([], {
             page: View("homePage").data(DataApi.collectionName(User), { id: "@me" }).context({ me: true }),
             guards: [
-                View("guards.firstTimeGuard")
+                View("guards.firstTime")
                     .data(DataApi.collectionName(User), { id: "@me" }).context({ me: true }),
+                View("guards.welcome").data(DataApi.collectionName(User), { id: "@me" }).context({ me: true }),
             ],
         }).context({ pathParams: true })
     },
@@ -19,7 +20,7 @@ export const lenraRoutes = [
         view: GuardsModule([], {
             page: View("gamePageDataProvider"),
             guards: [
-                View("guards.firstTimeGuard")
+                View("guards.firstTime")
                     .data(DataApi.collectionName(User), { id: "@me" }).context({ me: true }),
             ],
         }).context({ pathParams: true })

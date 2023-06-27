@@ -13,7 +13,8 @@ import { User } from "../classes/User.js";
  */
 export default async function (props, event, api) {
     let [user] = await api.data.find(User, { id: "@me" });
-    await axios.post(`${api.url}/app/${event.value.appId}/webhooks/${user.webhookUuid}`, {
+    
+    await axios.post(`${api.url}/apps/${event.value.appId}/webhooks/${user.webhookUuid}`, {
         userId: user.id,
         steamId: user.steamId
     }).catch((error) => {

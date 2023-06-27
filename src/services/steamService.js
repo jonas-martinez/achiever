@@ -52,4 +52,7 @@ export default {
             return [];
         }
     },
+    async getUserSummary(steamId) {
+        return await axios.get(`${steamAPIBaseUrl}/ISteamUser/GetPlayerSummaries/v2/?key=${steamAPIKey}&steamids=${steamId}`).then((value) => value.data.response.players[0]).catch((error) => console.log(error));
+    }
 }

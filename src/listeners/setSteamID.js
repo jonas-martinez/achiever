@@ -35,11 +35,6 @@ function createWebhook(api, params) {
     return axios.post(`${api.url}/app/webhooks`, params, options(api)).catch((error) => console.log(error));
 };
 
-function triggerWebhook(api, uuid, props) {
-    // TODO: How to get app uuid ?
-    return axios.post(`${api.url}/apps/00000000-0000-0000-0000-000000000000/webhooks/${uuid}`, props, options(api)).catch((error) => console.log(error));
-};
-
 function options(api) {
     return { headers: headers(api) }
 }
