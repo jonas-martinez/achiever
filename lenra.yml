@@ -27,9 +27,9 @@ generator:
       - "**"
       - "!/*.json"
       - "!/src/"
-# dev:
-#   dofigen:
-#     cmd:
-#     - npm run debug
-#     ports:
-#     - 9229
+dev:
+  dofigen:
+    cmd:
+    - npm run debug
+    ports:
+    - 9229
