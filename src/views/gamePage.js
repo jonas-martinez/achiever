@@ -3,8 +3,15 @@
 import { DataApi } from '@lenra/app-server';
 import { Flex, Actionable, Icon, Text, View } from '@lenra/components';
 import { UserGame } from '../classes/UserGame.js';
+import steamService from '../services/steamService.js';
 
 export default async function ([game], _props, _context) {
+    // let schema = await steamService.getSchemaForGame(game.appid);
+    // if (schema?.game?.availableGameStats?.achievements) {
+    //     console.log(schema.game.availableGameStats.achievements);
+    // }
+
+
     return Flex(
         [
             Flex(
@@ -22,7 +29,7 @@ export default async function ([game], _props, _context) {
             View('unlockedAchievements').data(DataApi.collectionName(UserGame), {
                 user: "@me",
                 appid: game.appid
-            }),
+            }).props(game),
         ]
     ).direction("vertical").crossAxisAlignment("center").fillParent(true)
 }

@@ -4,7 +4,7 @@ export class Game extends Data {
     /**
      * 
      * @param {Number} appid 
-     * @param {string[]} achievements 
+     * @param {JSON} achievements 
      * @param {string} img_icon_url 
      * @param {string} name 
      */

@@ -14,16 +14,17 @@ export default {
         return axios.get(`${steamAPIBaseUrl}/ISteamUser/ResolveVanityURL/v0001/?key=${steamAPIKey}&vanityurl=${vanityUrl}`).then((value) => value.data.response).catch((error) => console.log(error));
     },
     async getUserGames(api, userId, steamId) {
+        // TODO: Don't create Game if appid already in DB but update it.
         let games = await axios.get(`${steamAPIBaseUrl}/IPlayerService/GetOwnedGames/v1/?key=${steamAPIKey}&steamid=${steamId}&include_appinfo=true&include_played_free_games=true`).then((value) => value.data.response).catch((error) => console.log(error));
         let promises = [];
         games.games.forEach(game => {
             if (game !== undefined) {
                 promises.push(new Promise(async () => {
                     // Add achievements to game
-                    let achievements = await this.getGameAchievements(steamId, game.appid);
+                    let achievements = (await this.getSchemaForGame(game.appid)).game?.availableGameStats?.achievements;
 
                     // Add game in db
-                    await gameService.new(api, new Game(game.appid, achievements, game.img_icon_url, game.name));
+                    await gameService.new(api, new Game(game.appid, achievements ?? [], game.img_icon_url, game.name));
                     // Add user game achievements and playtime in db
                     let unlockedAchievements = await this.getUserGameAchievements(steamId, game.appid);
 
@@ -32,14 +33,6 @@ export default {
             }
         });
         return await Promise.all(promises);
-    },
-    async getGameAchievements(steamId, gameId) {
-        // Get user game achievements as there is not API to get game achievements directly
-        let achievements = await axios.get(`${steamAPIBaseUrl}/ISteamUserStats/GetPlayerAchievements/v0001/?key=${steamAPIKey}&steamid=${steamId}&appid=${gameId}`).then((value) => value.data.playerstats.achievements).catch((error) => null);
-        if (achievements != undefined && achievements != null) {
-            // Return array of achievements apiname
-            return achievements.map(achievement => achievement.apiname);
-        }
     },
     async getUserGameAchievements(steamId, gameId) {
         // Get user achievements (unlocked & locked)
@@ -54,5 +47,8 @@ export default {
     },
     async getUserSummary(steamId) {
         return await axios.get(`${steamAPIBaseUrl}/ISteamUser/GetPlayerSummaries/v2/?key=${steamAPIKey}&steamids=${steamId}`).then((value) => value.data.response.players[0]).catch((error) => console.log(error));
+    },
+    async getSchemaForGame(appid) {
+        return (await axios.get(`${steamAPIBaseUrl}/ISteamUserStats/GetSchemaForGame/v2/?key=${steamAPIKey}&appid=${appid}`)).data;
     }
 }
