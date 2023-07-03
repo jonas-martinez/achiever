@@ -17,13 +17,13 @@ export default async function (data, userGame) {
                         [
                             Text(game.name).style({ fontWeight: 'bold', fontSize: 16 }),
                             Flex([
-                                Icon("timer"),
+                                Icon("timer").color(0xFF1a9925),
                                 Text(`${hoursPlayed}h ${minutesPlayed}m`),
-                            ]).direction('horizontal'),
+                            ]).direction('horizontal').crossAxisAlignment('center').spacing(4),
                             Flex([
-                                Icon("emoji_events"),
+                                Icon("emoji_events").color(0xFFd4af37),
                                 Text(`${userGame.achieved.length} achievements`)
-                            ]).direction('horizontal'),
+                            ]).direction('horizontal').crossAxisAlignment('center').spacing(4),
                         ]
                     ).direction("vertical").spacing(4)
                 ]
