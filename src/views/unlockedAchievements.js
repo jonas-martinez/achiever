@@ -5,19 +5,21 @@ import { Flex, Actionable, Icon, Text, View, Image, Container } from '@lenra/com
 import { UserGame } from '../classes/UserGame.js';
 
 export default async function ([userGame], game, _context) {
+    let unlockedAchievements = game.achievements.filter((achievement) => {
+        return userGame.achieved.some(achieved => achieved.name == achievement.name);
+    });
+
     return Container(
         Flex(
             // userGame.achieved.map((achievement) => {
             //     return Text(achievement);
             // })
-            game.achievements.map((achievement) => {
-                // const achievementIcon = achievement.icon.replace(/https:\/\/steamcdn-a\.akamaihd\.net/g, 'https://cdn.cloudflare.steamstatic.com');
-
+            unlockedAchievements.map((achievement) => {
                 return Container(
                     Flex([
                         Image(achievement.icon),
                         Flex([
-                            Text(achievement.displayName),
+                            Text(achievement.displayName).style({ fontSize: 20, fontWeight: 'bold' }),
                             Text(achievement.description)
                         ]).direction('vertical')
                     ])

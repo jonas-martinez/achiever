@@ -40,7 +40,7 @@ export default {
         // Filter unlocked achievements
         if (achievements != undefined) {
             let unlocked = achievements.filter(achievement => achievement.achieved == 1 ? true : false);
-            return unlocked.map(achievement => achievement.apiname);
+            return unlocked.map(achievement => { return { name: achievement.apiname, unlocktime: achievement.unlocktime } });
         } else {
             return [];
         }

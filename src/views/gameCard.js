@@ -1,8 +1,6 @@
 'use strict'
 
-import { DataApi } from "@lenra/app-server";
-import { Actionable, Container, Image, Text, View, Flex } from "@lenra/components";
-import { UserGame } from "../classes/UserGame.js";
+import { Actionable, Container, Image, Text, View, Flex, Icon } from "@lenra/components";
 
 export default async function (data, userGame) {
     let game = data[0];
@@ -17,23 +15,29 @@ export default async function (data, userGame) {
                     Image(`https://cdn.cloudflare.steamstatic.com/steam/apps/${userGame.appid}/capsule_231x87.jpg`),
                     Flex(
                         [
-                            Text(game.name),
-                            Text(`${hoursPlayed}h ${minutesPlayed}m`),
-                            Text(`${userGame.achieved.length} achievements`)
+                            Text(game.name).style({ fontWeight: 'bold', fontSize: 16 }),
+                            Flex([
+                                Icon("timer"),
+                                Text(`${hoursPlayed}h ${minutesPlayed}m`),
+                            ]).direction('horizontal'),
+                            Flex([
+                                Icon("emoji_events"),
+                                Text(`${userGame.achieved.length} achievements`)
+                            ]).direction('horizontal'),
                         ]
-                    ).direction("vertical").spacing(1)
+                    ).direction("vertical").spacing(4)
                 ]
-            ).spacing(1)
+            ).spacing(8)
         )
             .constraints({
                 minWidth: -1,
                 maxWidth: -1
             })
             .padding({
-                bottom: 1,
-                left: 1,
-                right: 1,
-                top: 1,
+                bottom: 4,
+                left: 4,
+                right: 4,
+                top: 4,
             })
             .border({
                 bottom: {},
