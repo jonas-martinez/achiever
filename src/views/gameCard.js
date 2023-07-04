@@ -15,14 +15,14 @@ export default async function (data, userGame) {
                     Image(`https://cdn.cloudflare.steamstatic.com/steam/apps/${userGame.appid}/capsule_231x87.jpg`),
                     Flex(
                         [
-                            Text(game.name).style({ fontWeight: 'bold', fontSize: 16 }),
+                            Text(game.name).style({ fontWeight: 'bold', fontSize: 16, color: 0xFFFFFFFF }),
                             Flex([
                                 Icon("timer").color(0xFF1a9925),
-                                Text(`${hoursPlayed}h ${minutesPlayed}m`),
+                                Text(`${hoursPlayed}h ${minutesPlayed}m`).style({ color: 0xFFaaabad }),
                             ]).direction('horizontal').crossAxisAlignment('center').spacing(4),
                             Flex([
                                 Icon("emoji_events").color(0xFFd4af37),
-                                Text(`${userGame.achieved.length} achievements`)
+                                Text(`${userGame.achieved.length} achievements`).style({ color: 0xFFaaabad }),
                             ]).direction('horizontal').crossAxisAlignment('center').spacing(4),
                         ]
                     ).direction("vertical").spacing(4)
@@ -40,10 +40,10 @@ export default async function (data, userGame) {
                 top: 4,
             })
             .border({
-                bottom: {},
-                left: {},
-                right: {},
-                top: {}
+                bottom: { color: 0xFFaaabad },
+                left: { color: 0xFFaaabad },
+                right: { color: 0xFFaaabad },
+                top: { color: 0xFFaaabad }
             })
     ).onPressed("@lenra:navTo", { path: `/game/${userGame.appid}` })
 }

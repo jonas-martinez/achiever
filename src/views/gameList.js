@@ -12,7 +12,7 @@ export default async function (userGames, props) {
 
     return Flex(userGames.map(function (userGame) {
         return View("gameCard").props(userGame).data(DataApi.collectionName(Game), { appid: userGame.appid });
-    })).direction("vertical").scroll(true).spacing(2)
+    })).direction("vertical").scroll(true).spacing(8)
 }
 
 function paginate(array, page_size, page_number) {
