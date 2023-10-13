@@ -1,14 +1,13 @@
 'use strict'
 
-import { DataApi } from "@lenra/app-server";
 import userGameService from "../services/userGameService.js";
 import { User } from "../classes/User.js";
 
 /**
  * 
- * @param {import("@lenra/app-server").props} props 
- * @param {import("@lenra/app-server").event} event 
- * @param {import("@lenra/app-server").Api} api
+ * @param {import("@lenra/app").props} props 
+ * @param {import("@lenra/app").event} event 
+ * @param {import("@lenra/app").Api} api
  * @returns 
  */
 export default async function (props, event, api) {

@@ -4,9 +4,9 @@ import { System } from "../classes/System.js";
 
 /**
  * 
- * @param {import("@lenra/app-server").props} _props 
- * @param {import("@lenra/app-server").event} _event 
- * @param {import("@lenra/app-server").Api} api 
+ * @param {import("@lenra/app").props} _props 
+ * @param {import("@lenra/app").event} _event 
+ * @param {import("@lenra/app").Api} api 
  */
 export async function onEnvStart(_props, _event, api) {
     

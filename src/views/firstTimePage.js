@@ -1,6 +1,6 @@
 'use strict'
 
-import { Flex, Text, Container, Form, TextField, Button, Actionable } from "@lenra/components";
+import { Flex, Text, Container, Form, TextField, Button, Actionable } from "@lenra/app";
 
 export default function (data, props) {
     return Container(

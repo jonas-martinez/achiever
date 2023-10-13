@@ -5,7 +5,7 @@ import { Game } from '../classes/Game.js';
 export default {
     /**
      * 
-     * @param {import("@lenra/app-server").Api} api 
+     * @param {import("@lenra/app").Api} api 
      * @param {Number} gameId
      */
     get(api, gameId) {
@@ -13,14 +13,14 @@ export default {
     },
     /**
      * 
-     * @param {import("@lenra/app-server").Api} api 
+     * @param {import("@lenra/app").Api} api 
      */
     get_all(api) {
         return api.data.find(Game, {}).then((value) => value.data);
     },
     /**
      * 
-     * @param {import("@lenra/app-server").Api} api 
+     * @param {import("@lenra/app").Api} api 
      * @param {Game} game 
      */
     update(api, game) {
@@ -28,7 +28,7 @@ export default {
     },
     /**
      * 
-     * @param {import("@lenra/app-server").Api} api 
+     * @param {import("@lenra/app").Api} api 
      * @param {Game} game 
      */
     async new(api, game) {

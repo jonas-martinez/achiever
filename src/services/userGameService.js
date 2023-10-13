@@ -5,7 +5,7 @@ import { UserGame } from '../classes/UserGame.js';
 export default {
     /**
      * 
-     * @param {import("@lenra/app-server").Api} api 
+     * @param {import("@lenra/app").Api} api 
      * @param {Number} gameId
      */
     get(api, gameId) {
@@ -16,7 +16,7 @@ export default {
     },
     /**
      * 
-     * @param {import("@lenra/app-server").Api} api 
+     * @param {import("@lenra/app").Api} api 
      */
     get_all(api) {
         return api.data.find(UserGame, {
@@ -25,7 +25,7 @@ export default {
     },
     /**
      * 
-     * @param {import("@lenra/app-server").Api} api 
+     * @param {import("@lenra/app").Api} api 
      * @param {UserGame} userGame
      */
     async new(api, userGame) {
@@ -33,7 +33,7 @@ export default {
     },
     /**
      * 
-     * @param {import("@lenra/app-server").Api} api 
+     * @param {import("@lenra/app").Api} api 
      * @param {string} userGameId
      * @param {UserGame} userGame
      */

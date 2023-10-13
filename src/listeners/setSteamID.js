@@ -2,13 +2,12 @@
 
 import axios from "axios";
 import { User } from "../classes/User.js";
-import { DataApi } from "@lenra/app-server";
 
 /**
  * 
- * @param {import("@lenra/app-server").props} props 
- * @param {import("@lenra/app-server").event} event 
- * @param {import("@lenra/app-server").Api} api
+ * @param {import("@lenra/app").props} props 
+ * @param {import("@lenra/app").event} event 
+ * @param {import("@lenra/app").Api} api
  * @returns 
  */
 export default async function (props, event, api) {

@@ -1,6 +1,6 @@
 'use strict'
 
-import { Flex, Actionable, Icon, Text, View, Image, Container } from '@lenra/components';
+import { Flex, Actionable, Icon, Text, View, Image, Container } from '@lenra/app';
 
 export default async function ([userGame], game, _context) {
     let unlockedAchievements = game.achievements.filter((achievement) => {

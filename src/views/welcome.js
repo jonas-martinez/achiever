@@ -1,4 +1,4 @@
-import { Flex, Image, Text, Container, Actionable } from "@lenra/components"
+import { Flex, Image, Text, Container, Actionable } from "@lenra/app"
 
 
 export default async function ([user], props, context) {

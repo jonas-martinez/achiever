@@ -1,6 +1,6 @@
 'use strict'
 
-import { Actionable, Container, Image, Text, View, Flex, Icon } from "@lenra/components";
+import { Actionable, Container, Image, Text, View, Flex, Icon } from "@lenra/app";
 
 export default async function (data, userGame) {
     let game = data[0];

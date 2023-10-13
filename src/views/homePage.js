@@ -1,8 +1,8 @@
 'use strict'
 
-import { Flex, Form, Text, Button, Flexible, Container, View, TextField } from '@lenra/components'
+import { Flex, Form, Text, Button, Flexible, Container, View, TextField } from '@lenra/app'
 import { UserGame } from '../classes/UserGame.js';
-import { DataApi } from '@lenra/app-server';
+import { DataApi } from '@lenra/app';
 
 export default async function ([user], props, context) {
     return Container(
@@ -38,7 +38,7 @@ export default async function ([user], props, context) {
                         // Container(TextField(`{ "userId": "${user.id}", "steamId": "${user.steamId}" }`)).maxWidth(600),
                         Flexible(
                             Container(
-                                View("gameList").data(DataApi.collectionName(UserGame), { user: "@me" }),
+                                View("gameList").find(DataApi.collectionName(UserGame), { user: "@me" }),
                             ).maxWidth(600).maxHeight(600)
                         )
                     ]
