@@ -12,7 +12,7 @@ import { User } from "../classes/User.js";
  */
 export default async function (props, event, api) {
     userGameService.createDatastore(api);
-    let userData = (await api.data.find(User, { id: "@me" }))[0];
+    let userData = (await api.data.coll(User).find({ id: "@me" }))[0];
     userGameService.new(api, {appid: 1}, userData._id);
     return {}
 }

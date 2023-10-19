@@ -12,8 +12,8 @@ import { User } from "../classes/User.js";
  * @returns 
  */
 export default async function (userSummary, event, api) {
-    let [user] = await api.data.find(User, { id: "@me" });
+    let [user] = await api.data.coll(User).find({ id: "@me" });
     user.avatar = userSummary.avatarfull;
     user.personaname = userSummary.personaname;
-    await api.data.updateDoc(user);
+    await api.data.coll(User).updateDoc(user);
 }

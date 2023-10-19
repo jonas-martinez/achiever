@@ -12,7 +12,7 @@ import { User } from "../classes/User.js";
  * @returns 
  */
 export default async function (props, event, api) {
-    let [user] = await api.data.find(User, { id: "@me" });
+    let [user] = await api.data.coll(User).find({ id: "@me" });
     
     axios.post(`${api.url}/apps/${event.value.appId}/webhooks/${user.webhookUuid}`, {
         userId: user.id,
@@ -21,11 +21,11 @@ export default async function (props, event, api) {
         console.log(error);
     });
 
-    let [system] = await api.data.find(System, {});
+    let [system] = await api.data.coll(System).find({});
     if (system == undefined) {
-        return await api.data.createDoc(new System(event.value.appId));
+        return await api.data.coll(System).createDoc(new System(event.value.appId));
     }
 
     system.appId = event.value.appId;
-    return await api.data.updateDoc(system);
+    return await api.data.coll(System).updateDoc(system);
 }
