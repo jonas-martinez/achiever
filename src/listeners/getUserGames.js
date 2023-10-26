@@ -10,7 +10,7 @@ import steamService from "../services/steamService.js";
  * @returns 
  */
 export default async function (props, event, api) {
-    steamService.getUserGames(api, event.userId, event.steamId);
+    await steamService.getUserGames(api, event.userId, event.steamId);
 
     return {};
 }
