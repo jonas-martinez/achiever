@@ -3,7 +3,7 @@
 import { Flex, Actionable, Icon, Text, View, Image, Container } from '@lenra/app';
 
 export default async function ([userGame], game, _context) {
-    let unlockedAchievements = game.achievements.filter((achievement) => {
+    let unlockedAchievements = game.achievements?.filter((achievement) => {
         return userGame.achieved.some(achieved => achieved.name == achievement.name);
     });
 
@@ -12,7 +12,7 @@ export default async function ([userGame], game, _context) {
             // userGame.achieved.map((achievement) => {
             //     return Text(achievement);
             // })
-            unlockedAchievements.map((achievement) => {
+            unlockedAchievements?.map((achievement) => {
                 return Container(
                     Flex([
                         Image(achievement.icon),

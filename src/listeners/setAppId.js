@@ -1,7 +1,6 @@
 'use strict'
 
 import axios from "axios";
-import { System } from "../classes/System.js";
 import { User } from "../classes/User.js";
 
 /**
@@ -21,11 +20,13 @@ export default async function (props, event, api) {
         console.log(error);
     });
 
-    let [system] = await api.data.coll(System).find({});
-    if (system == undefined) {
-        return await api.data.coll(System).createDoc(new System(event.value.appId));
-    }
+    return {};
 
-    system.appId = event.value.appId;
-    return await api.data.coll(System).updateDoc(system);
+    // let [system] = await api.data.coll(System).find({});
+    // if (system == undefined) {
+    //     return await api.data.coll(System).createDoc(new System(event.value.appId));
+    // }
+
+    // system.appId = event.value.appId;
+    // return await api.data.coll(System).updateDoc(system);
 }

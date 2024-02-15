@@ -5,16 +5,20 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node node_modules/@lenra/app/dist/bin/app-lenra.js start",
-    "index": "node node_modules/@lenra/app/dist/bin/app-lenra.js index",
+    "start": "bun node_modules/@lenra/app/dist/bin/app-lenra.js start",
+    "index": "bun node_modules/@lenra/app/dist/bin/app-lenra.js index",
     "postinstall": "npm run index",
+    "healthcheck": "bun src/healthcheck.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
   "author": "Lenra",
   "license": "MIT",
   "dependencies": {
-    "@lenra/app": "^1.1.0",
+    "@lenra/app": "^1.2.0",
     "axios": "^1.5.1"
+  },
+  "app-lenra": {
+    "app": "app.js"
   }
 }

@@ -5,6 +5,7 @@ import { UserGame } from '../classes/UserGame.js';
 import { DataApi } from '@lenra/app';
 
 export default async function ([user], props, context) {
+    console.log(user);
     return Container(
         Flex(
             [
@@ -36,11 +37,12 @@ export default async function ([user], props, context) {
                         ).maxWidth(600),
                         // `<lenra_domain_name>/apps/<lenra_app_uuid>/webhooks/${user.webhookUuid}`
                         // Container(TextField(`{ "userId": "${user.id}", "steamId": "${user.steamId}" }`)).maxWidth(600),
-                        Flexible(
+                        user.isInitialized ? Flexible(
                             Container(
-                                View("gameList").find(DataApi.collectionName(UserGame), { user: "@me" }),
+                                View("gameList").find(DataApi.collectionName(UserGame), { query: { user: "@me" }, limit: 10, sort: { playtimeForever: -1 } }),
                             ).maxWidth(600).maxHeight(600)
-                        )
+                        ) : Text("We are currently loading your games, please wait for a couple of minutes.").style({ fontSize: 16, fontWeight: 'bold', color: 0xFFaaabad }),
+
                     ]
                 ).direction("vertical")
                     .mainAxisAlignment('spaceAround')

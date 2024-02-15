@@ -8,13 +8,15 @@ export class User extends Data {
      * @param {string} webhookUuid
      * @param {string} avatar
      * @param {string} personaname
+     * @param {boolean} isInitialized
      */
-    constructor(id, steamid, webhookUuid, avatar, personaname) {
+    constructor(id, steamid, webhookUuid, avatar, personaname, isInitialized = false) {
         super();
         this.id = id;
         this.steamId = steamid;
         this.webhookUuid = webhookUuid;
         this.avatar = avatar;
         this.personaname = personaname;
+        this.isInitialized = isInitialized;
     }
 }
