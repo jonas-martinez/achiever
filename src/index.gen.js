@@ -6,11 +6,14 @@ export const views = {
 	"gamePageDataProvider": "gamePageDataProvider",
 	"guards": {
 		"_guards": "guards._guards",
-		"firstTimeGuard": "guards.firstTimeGuard"
+		"firstTime": "guards.firstTime",
+		"welcome": "guards.welcome"
 	},
 	"homePage": "homePage",
 	"resetDatabaseButton": "resetDatabaseButton",
-	"userData": "userData"
+	"unlockedAchievements": "unlockedAchievements",
+	"userData": "userData",
+	"welcome": "welcome"
 };
 export const listeners = {
 	"debug": "debug",
@@ -19,5 +22,7 @@ export const listeners = {
 	"onSessionStart": "onSessionStart",
 	"onUserFirstJoin": "onUserFirstJoin",
 	"resetDatabase": "resetDatabase",
-	"setSteamID": "setSteamID"
+	"setAppId": "setAppId",
+	"setSteamID": "setSteamID",
+	"thisisme": "thisisme"
 };

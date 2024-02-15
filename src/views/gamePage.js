@@ -1,8 +1,17 @@
 'use strict'
 
-import { Flex, Actionable, Icon, Text } from '@lenra/components';
+import { DataApi } from '@lenra/app';
+import { Flex, Actionable, Icon, Text, View } from '@lenra/app';
+import { UserGame } from '../classes/UserGame.js';
+import steamService from '../services/steamService.js';
 
 export default async function ([game], _props, _context) {
+    // let schema = await steamService.getSchemaForGame(game.appid);
+    // if (schema?.game?.availableGameStats?.achievements) {
+    //     console.log(schema.game.availableGameStats.achievements);
+    // }
+
+
     return Flex(
         [
             Flex(
@@ -16,8 +25,12 @@ export default async function ([game], _props, _context) {
                         ]
                     ).direction("horizontal")
                 ]
-            ).direction("horizontal").mainAxisAlignment("center").crossAxisAlignment("center").spacing(2)
+            ).direction("horizontal").mainAxisAlignment("center").crossAxisAlignment("center").spacing(2).fillParent(true),
+            View('unlockedAchievements').find(DataApi.collectionName(UserGame), {
+                user: "@me",
+                appid: game.appid
+            }).props(game),
         ]
-    ).direction("horizontal").mainAxisAlignment("center").crossAxisAlignment("center").fillParent(true)
+    ).direction("vertical").crossAxisAlignment("center").fillParent(true)
 }
 

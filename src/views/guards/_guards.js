@@ -1,6 +1,6 @@
 'use strict'
 
-import { View, ViewImpl } from "@lenra/components"
+import { View, ViewImpl } from "@lenra/app"
 
 export default function (_data, { page, guards = [], context }, ctx) {
   let nextView = page
@@ -21,7 +21,7 @@ function jsonToView(json) {
   if (!(json instanceof ViewImpl)) {
     let view = View(json.name)
     if (json.find && json.find.coll && json.find.query) {
-      view = view.data(json.find.coll, json.find.query);
+      view = view.find(json.find.coll, json.find.query);
     }
 
     return view;

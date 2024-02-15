@@ -1,6 +1,6 @@
 'use strict'
 
-import { Actionable, Container, Text } from '@lenra/components'
+import { Actionable, Container, Text } from '@lenra/app'
 
 export default async function (data, props) {
     return Actionable(
